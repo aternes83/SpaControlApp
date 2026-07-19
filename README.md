@@ -28,8 +28,9 @@ regenerate with:
 ```bash
 xcodegen generate
 ```
-Adding/removing Swift files under `SpaControl/` needs no regeneration — the
-target globs the folder, so new files are picked up automatically.
+Regenerate after **adding or removing** Swift files under `SpaControl/`, since
+the project references files individually (it does not auto-sync the folder).
+Editing existing files needs no regeneration.
 
 ---
 

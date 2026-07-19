@@ -12,8 +12,41 @@ class SpaViewModel: NSObject, ObservableObject {
     @Published var status: SpaStatus?
     @Published var connectionState: ConnectionState = .disconnected
 
+    /// Timestamp of the most recent valid `spa/status`. nil until the first arrives.
+    @Published private(set) var lastStatusDate: Date?
+    /// True when connected but no fresh status has arrived within `staleThreshold`.
+    @Published private(set) var isStale: Bool = false
+
+    /// The board publishes `spa/status` every ~30 s; flag stale after 3 missed
+    /// cycles. This stays above the ~30 s gap of the weekly planned reboot, so a
+    /// scheduled reset does not trip a false stale warning.
+    static let staleThreshold: TimeInterval = 90
+
     private var mqttClient: CocoaMQTT?
     private var intentionalDisconnect = false
+    private var stalenessTimer: Timer?
+
+    override init() {
+        super.init()
+        // Re-evaluate staleness on a timer so the flag flips even when no new
+        // message arrives (that's precisely the frozen-feed case we care about).
+        stalenessTimer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { [weak self] _ in
+            self?.refreshStaleness()
+        }
+    }
+
+    deinit {
+        stalenessTimer?.invalidate()
+    }
+
+    private func refreshStaleness() {
+        guard connectionState == .connected, let last = lastStatusDate else {
+            if isStale { isStale = false }
+            return
+        }
+        let stale = Date().timeIntervalSince(last) > Self.staleThreshold
+        if stale != isStale { isStale = stale }
+    }
 
     private static let decoder: JSONDecoder = {
         let d = JSONDecoder()
@@ -84,13 +117,19 @@ extension SpaViewModel: CocoaMQTTDelegate {
         guard let string = message.string,
               let data   = string.data(using: .utf8),
               let parsed = try? Self.decoder.decode(SpaStatus.self, from: data) else { return }
-        DispatchQueue.main.async { self.status = parsed }
+        DispatchQueue.main.async {
+            self.status = parsed
+            self.lastStatusDate = Date()
+            self.isStale = false
+        }
     }
 
     func mqttDidDisconnect(_ mqtt: CocoaMQTT, withError err: Error?) {
         DispatchQueue.main.async {
             self.connectionState = .disconnected
             self.status = nil
+            self.lastStatusDate = nil
+            self.isStale = false
             guard !self.intentionalDisconnect else { return }
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) { self.connect() }
         }

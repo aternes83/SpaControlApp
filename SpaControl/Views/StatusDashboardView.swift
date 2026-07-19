@@ -6,6 +6,12 @@ struct StatusDashboardView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
+                LastUpdatedLabel()
+
+                if vm.isStale {
+                    StaleStatusBanner(lastUpdate: vm.lastStatusDate)
+                }
+
                 TemperatureControlView()
 
                 if vm.status?.fault == true {
