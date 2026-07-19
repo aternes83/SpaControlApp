@@ -2,31 +2,34 @@
 
 Native SwiftUI app for controlling the ESP32-S3 spa controller via MQTT (HiveMQ Cloud).
 
-## Xcode Setup (one-time)
+## Build & Run
 
-### 1. Create the Xcode project
-- File → New → Project → iOS → App
-- Product Name: `SpaControl`
-- Bundle Identifier: `com.yourname.SpaControl`
-- Interface: **SwiftUI**, Language: **Swift**
-- Minimum Deployments: **iOS 16**
-- Uncheck "Include Tests" for now
+The Xcode project is committed and ready to open — no manual project creation needed.
 
-### 2. Add CocoaMQTT via Swift Package Manager
-- File → Add Package Dependencies…
-- URL: `https://github.com/emqx/CocoaMQTT`
-- Dependency Rule: Up to Next Major Version from `2.1.0`
-- Add **CocoaMQTT** to the `SpaControl` target
+### 1. Open the project
+```bash
+open SpaControl.xcodeproj
+```
+On first open, Xcode automatically resolves the **CocoaMQTT** Swift Package
+(`https://github.com/emqx/CocoaMQTT`, up to next major from `2.1.0`).
 
-### 3. Replace the generated files with this repo's files
-- Delete `ContentView.swift` and `<AppName>App.swift` that Xcode generated
-- Drag the folders `Models/`, `ViewModels/`, `Views/`, and `SpaControlApp.swift`
-  from this directory into the Xcode project navigator
-- Make sure "Copy items if needed" is **unchecked** (or checked if you want a copy)
-- Target membership: `SpaControl` ✓
+### 2. Set your signing team
+- Select the **SpaControl** target → **Signing & Capabilities**
+- Choose your Team (bundle id defaults to `com.spacontrol.SpaControl`; change if needed)
 
-### 4. Run
-Build and run on a device or simulator (iOS 16+).
+### 3. Run
+Build and run on a device or simulator (**iOS 16+**).
+
+### Regenerating the project (optional)
+`SpaControl.xcodeproj` is generated from [`project.yml`](project.yml) via
+[XcodeGen](https://github.com/yonaskolb/XcodeGen) — `project.yml` is the source
+of truth. After changing project structure (targets, packages, settings),
+regenerate with:
+```bash
+xcodegen generate
+```
+Adding/removing Swift files under `SpaControl/` needs no regeneration — the
+target globs the folder, so new files are picked up automatically.
 
 ---
 

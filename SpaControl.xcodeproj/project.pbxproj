@@ -1,0 +1,407 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1835A89B27B35F50FA9B4871 /* SpaCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C07FDB56EA22173354AAAC6 /* SpaCommand.swift */; };
+		267F68C8B93AF88DD514F0D7 /* CocoaMQTT in Frameworks */ = {isa = PBXBuildFile; productRef = CF479A42E259BA2A3BCFDE1B /* CocoaMQTT */; };
+		2A36248C4FB34002BA59FC5B /* SpaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3420B1B077E7F2551C8D89F5 /* SpaViewModel.swift */; };
+		43E58BF334D05AEBEE09379A /* SpaControlApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC434F929B6F6E0B41E5719F /* SpaControlApp.swift */; };
+		72DD127E8BE250C98EBEBF36 /* ConnectionStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E63FEB3E4E7BE23A03318CD /* ConnectionStatusView.swift */; };
+		7A8E44BDEB647B828CC2DF2E /* StatusDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5F98E7367679FD138A64AD /* StatusDashboardView.swift */; };
+		84B68F1CD857B5A90B88A4C3 /* BrokerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87135931A0298F9B7FCC4FC9 /* BrokerSettings.swift */; };
+		A9D46AC0CF10C138EA6909CB /* SpaStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B37C0A144D7BBF59259D36D /* SpaStatus.swift */; };
+		B558F76F844A827706C97093 /* LightEcoControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7021F05C1C4DB1A1031113 /* LightEcoControlView.swift */; };
+		D259E6204D2625E2818AB4F3 /* SettingsSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C786B265848E5881E7CC8A /* SettingsSheet.swift */; };
+		DEDBDD3E7ED6D67A4ED855E1 /* PumpControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D2DC3899E8E3FE4B4E2E76 /* PumpControlView.swift */; };
+		F5743EABB974EA9BBCEE6A55 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C7205B44D4CB523D47427B /* ContentView.swift */; };
+		FDAC9ABA900B4D58164084A0 /* TemperatureControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B142DC8133BA488443B03A9D /* TemperatureControlView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1B37C0A144D7BBF59259D36D /* SpaStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaStatus.swift; sourceTree = "<group>"; };
+		3420B1B077E7F2551C8D89F5 /* SpaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaViewModel.swift; sourceTree = "<group>"; };
+		64C7205B44D4CB523D47427B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		6C07FDB56EA22173354AAAC6 /* SpaCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaCommand.swift; sourceTree = "<group>"; };
+		87135931A0298F9B7FCC4FC9 /* BrokerSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrokerSettings.swift; sourceTree = "<group>"; };
+		8E63FEB3E4E7BE23A03318CD /* ConnectionStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStatusView.swift; sourceTree = "<group>"; };
+		90D2DC3899E8E3FE4B4E2E76 /* PumpControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PumpControlView.swift; sourceTree = "<group>"; };
+		AF5F98E7367679FD138A64AD /* StatusDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDashboardView.swift; sourceTree = "<group>"; };
+		B142DC8133BA488443B03A9D /* TemperatureControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureControlView.swift; sourceTree = "<group>"; };
+		DE56A20B2CE60707A74051EC /* SpaControl.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = SpaControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7C786B265848E5881E7CC8A /* SettingsSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSheet.swift; sourceTree = "<group>"; };
+		EC434F929B6F6E0B41E5719F /* SpaControlApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaControlApp.swift; sourceTree = "<group>"; };
+		FF7021F05C1C4DB1A1031113 /* LightEcoControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightEcoControlView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A394928AD28E4BBB896B0ECD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				267F68C8B93AF88DD514F0D7 /* CocoaMQTT in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1670E8078A309B3F5733644B = {
+			isa = PBXGroup;
+			children = (
+				D866B152CC953FD228841A9B /* SpaControl */,
+				5EB0C2B184EE0A0E095A6C73 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5EB0C2B184EE0A0E095A6C73 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DE56A20B2CE60707A74051EC /* SpaControl.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7F12BB53A8A9AA2361B3FB9B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				3420B1B077E7F2551C8D89F5 /* SpaViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		A53179085715589C48C17CE2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8E63FEB3E4E7BE23A03318CD /* ConnectionStatusView.swift */,
+				64C7205B44D4CB523D47427B /* ContentView.swift */,
+				FF7021F05C1C4DB1A1031113 /* LightEcoControlView.swift */,
+				90D2DC3899E8E3FE4B4E2E76 /* PumpControlView.swift */,
+				E7C786B265848E5881E7CC8A /* SettingsSheet.swift */,
+				AF5F98E7367679FD138A64AD /* StatusDashboardView.swift */,
+				B142DC8133BA488443B03A9D /* TemperatureControlView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D866B152CC953FD228841A9B /* SpaControl */ = {
+			isa = PBXGroup;
+			children = (
+				DA74D9DA3BED4FC79019A9D5 /* Models */,
+				7F12BB53A8A9AA2361B3FB9B /* ViewModels */,
+				A53179085715589C48C17CE2 /* Views */,
+				EC434F929B6F6E0B41E5719F /* SpaControlApp.swift */,
+			);
+			path = SpaControl;
+			sourceTree = "<group>";
+		};
+		DA74D9DA3BED4FC79019A9D5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				87135931A0298F9B7FCC4FC9 /* BrokerSettings.swift */,
+				6C07FDB56EA22173354AAAC6 /* SpaCommand.swift */,
+				1B37C0A144D7BBF59259D36D /* SpaStatus.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CD3C959D53E680A6FC5A207C /* SpaControl */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 72CF3FEB773F18921DA9FE5D /* Build configuration list for PBXNativeTarget "SpaControl" */;
+			buildPhases = (
+				DE4B9B0EB204DF6D77E2F1C5 /* Sources */,
+				A394928AD28E4BBB896B0ECD /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SpaControl;
+			packageProductDependencies = (
+				CF479A42E259BA2A3BCFDE1B /* CocoaMQTT */,
+			);
+			productName = SpaControl;
+			productReference = DE56A20B2CE60707A74051EC /* SpaControl.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D944D2ED7D47078E8D857469 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					CD3C959D53E680A6FC5A207C = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = E0B34D7ECEEB32F1E672422F /* Build configuration list for PBXProject "SpaControl" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 1670E8078A309B3F5733644B;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				08411736C08DA11C9FFBE778 /* XCRemoteSwiftPackageReference "CocoaMQTT" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 5EB0C2B184EE0A0E095A6C73 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CD3C959D53E680A6FC5A207C /* SpaControl */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DE4B9B0EB204DF6D77E2F1C5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84B68F1CD857B5A90B88A4C3 /* BrokerSettings.swift in Sources */,
+				72DD127E8BE250C98EBEBF36 /* ConnectionStatusView.swift in Sources */,
+				F5743EABB974EA9BBCEE6A55 /* ContentView.swift in Sources */,
+				B558F76F844A827706C97093 /* LightEcoControlView.swift in Sources */,
+				DEDBDD3E7ED6D67A4ED855E1 /* PumpControlView.swift in Sources */,
+				D259E6204D2625E2818AB4F3 /* SettingsSheet.swift in Sources */,
+				1835A89B27B35F50FA9B4871 /* SpaCommand.swift in Sources */,
+				43E58BF334D05AEBEE09379A /* SpaControlApp.swift in Sources */,
+				A9D46AC0CF10C138EA6909CB /* SpaStatus.swift in Sources */,
+				2A36248C4FB34002BA59FC5B /* SpaViewModel.swift in Sources */,
+				7A8E44BDEB647B828CC2DF2E /* StatusDashboardView.swift in Sources */,
+				FDAC9ABA900B4D58164084A0 /* TemperatureControlView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		AA01A84B8D88E662E5408E31 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = SpaControl;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.spacontrol.SpaControl;
+				PRODUCT_NAME = SpaControl;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		ABEF9978BCCABFA8EAD9F26B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		BADAB451D511F9782D21F833 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		C5FDA976FAEFE4ACEBF43F0D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = SpaControl;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.spacontrol.SpaControl;
+				PRODUCT_NAME = SpaControl;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		72CF3FEB773F18921DA9FE5D /* Build configuration list for PBXNativeTarget "SpaControl" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA01A84B8D88E662E5408E31 /* Debug */,
+				C5FDA976FAEFE4ACEBF43F0D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		E0B34D7ECEEB32F1E672422F /* Build configuration list for PBXProject "SpaControl" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ABEF9978BCCABFA8EAD9F26B /* Debug */,
+				BADAB451D511F9782D21F833 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		08411736C08DA11C9FFBE778 /* XCRemoteSwiftPackageReference "CocoaMQTT" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/emqx/CocoaMQTT";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CF479A42E259BA2A3BCFDE1B /* CocoaMQTT */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 08411736C08DA11C9FFBE778 /* XCRemoteSwiftPackageReference "CocoaMQTT" */;
+			productName = CocoaMQTT;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = D944D2ED7D47078E8D857469 /* Project object */;
+}

@@ -1,0 +1,28 @@
+# Xcode / Swift
+## Build generated
+build/
+DerivedData/
+*.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+
+## Various user / IDE state
+xcuserdata/
+*.xcuserstate
+*.moved-aside
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+## Swift Package Manager
+.build/
+.swiftpm/
+Packages/
+
+## macOS
+.DS_Store
+
+## The .xcodeproj is generated from project.yml (XcodeGen), but committed here
+## so the repo opens and builds without extra tooling. project.yml is the
+## source of truth — regenerate with `xcodegen generate` after structural edits.

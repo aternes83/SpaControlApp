@@ -1,0 +1,38 @@
+name: SpaControl
+options:
+  bundleIdPrefix: com.spacontrol
+  deploymentTarget:
+    iOS: "16.0"
+  createIntermediateGroups: true
+  groupSortPosition: top
+
+packages:
+  CocoaMQTT:
+    url: https://github.com/emqx/CocoaMQTT
+    from: 2.1.0
+
+targets:
+  SpaControl:
+    type: application
+    platform: iOS
+    sources:
+      - path: SpaControl
+    dependencies:
+      - package: CocoaMQTT
+        product: CocoaMQTT
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.spacontrol.SpaControl
+        PRODUCT_NAME: SpaControl
+        MARKETING_VERSION: "1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        SWIFT_VERSION: "5.0"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        CODE_SIGN_STYLE: Automatic
+        # Let Xcode synthesize Info.plist from build settings (no physical file).
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+        INFOPLIST_KEY_CFBundleDisplayName: SpaControl
+        INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
