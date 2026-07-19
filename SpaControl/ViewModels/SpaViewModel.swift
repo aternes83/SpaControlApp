@@ -22,9 +22,20 @@ class SpaViewModel: NSObject, ObservableObject {
     /// scheduled reset does not trip a false stale warning.
     static let staleThreshold: TimeInterval = 90
 
+    /// Rolling in-memory history of temperature samples for the chart.
+    @Published private(set) var tempHistory: [TempSample] = []
+
+    private static let historyWindow: TimeInterval = 3 * 60 * 60  // keep last 3 hours
+    private static let historyMaxCount = 720                       // hard cap (~6 h @ 30 s)
+
     private var mqttClient: CocoaMQTT?
     private var intentionalDisconnect = false
     private var stalenessTimer: Timer?
+
+    /// Last observed fault state, for edge-triggered notifications. nil until the
+    /// first status after a (re)connect, so a persistent fault does not re-notify
+    /// on every reconnect.
+    private var previousFault: (faulted: Bool, code: Int)?
 
     override init() {
         super.init()
@@ -46,6 +57,40 @@ class SpaViewModel: NSObject, ObservableObject {
         }
         let stale = Date().timeIntervalSince(last) > Self.staleThreshold
         if stale != isStale { isStale = stale }
+    }
+
+    /// Apply a freshly decoded status: update state, freshness, history, and
+    /// fault notifications. Always called on the main thread.
+    private func ingest(_ parsed: SpaStatus) {
+        status = parsed
+        lastStatusDate = Date()
+        isStale = false
+        appendHistory(parsed)
+        checkFaultTransition(parsed)
+    }
+
+    private func appendHistory(_ parsed: SpaStatus) {
+        tempHistory.append(TempSample(date: Date(), tempF: parsed.tempF, setpoint: parsed.setpoint))
+        let cutoff = Date().addingTimeInterval(-Self.historyWindow)
+        tempHistory.removeAll { $0.date < cutoff }
+        if tempHistory.count > Self.historyMaxCount {
+            tempHistory.removeFirst(tempHistory.count - Self.historyMaxCount)
+        }
+    }
+
+    /// Fire a local notification only on fault edges: newly faulted, a changed
+    /// fault code, or a fault clearing. The first status after connect just sets
+    /// the baseline (previousFault == nil) so we never notify on reconnect.
+    private func checkFaultTransition(_ parsed: SpaStatus) {
+        let current = (faulted: parsed.fault, code: parsed.faultCode)
+        if let prev = previousFault {
+            if current.faulted && (!prev.faulted || prev.code != current.code) {
+                NotificationManager.shared.postFault(code: current.code)
+            } else if !current.faulted && prev.faulted {
+                NotificationManager.shared.postFaultCleared()
+            }
+        }
+        previousFault = current
     }
 
     private static let decoder: JSONDecoder = {
@@ -117,11 +162,7 @@ extension SpaViewModel: CocoaMQTTDelegate {
         guard let string = message.string,
               let data   = string.data(using: .utf8),
               let parsed = try? Self.decoder.decode(SpaStatus.self, from: data) else { return }
-        DispatchQueue.main.async {
-            self.status = parsed
-            self.lastStatusDate = Date()
-            self.isStale = false
-        }
+        DispatchQueue.main.async { self.ingest(parsed) }
     }
 
     func mqttDidDisconnect(_ mqtt: CocoaMQTT, withError err: Error?) {
@@ -130,6 +171,7 @@ extension SpaViewModel: CocoaMQTTDelegate {
             self.status = nil
             self.lastStatusDate = nil
             self.isStale = false
+            self.previousFault = nil   // re-baseline; don't re-notify on reconnect
             guard !self.intentionalDisconnect else { return }
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) { self.connect() }
         }

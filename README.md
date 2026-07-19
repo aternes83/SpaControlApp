@@ -2,6 +2,16 @@
 
 Native SwiftUI app for controlling the ESP32-S3 spa controller via MQTT (HiveMQ Cloud).
 
+## Features
+
+- **Live control & status** — temperature/setpoint, pumps, light, ECO, MAX JET over MQTT.
+- **Stale-status indicator** — warns when the connection is up but the board has
+  stopped publishing (amber nav-bar dot + dashboard banner + "updated Xs ago").
+- **Fault notifications** — a local notification fires when the board reports a
+  new fault (or one clears). Grant notification permission on first launch.
+- **Temperature history** — rolling ~3 h line chart of water temp vs. setpoint
+  (Swift Charts), kept in memory.
+
 ## Build & Run
 
 The Xcode project is committed and ready to open — no manual project creation needed.

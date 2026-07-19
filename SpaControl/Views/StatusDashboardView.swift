@@ -20,6 +20,8 @@ struct StatusDashboardView: View {
 
                 PumpControlView()
                 LightEcoControlView()
+
+                TempHistoryView(samples: vm.tempHistory)
             }
             .padding()
         }
@@ -30,9 +32,13 @@ struct FaultBannerView: View {
     let code: Int
 
     var body: some View {
-        HStack {
+        HStack(spacing: 10) {
             Image(systemName: "exclamationmark.triangle.fill")
-            Text("FAULT — Code \(code)").bold()
+                .font(.title3)
+            VStack(alignment: .leading, spacing: 2) {
+                Text("FAULT — \(FaultCode.shortLabel(code))").bold()
+                Text(FaultCode.description(code)).font(.caption)
+            }
             Spacer()
         }
         .padding()

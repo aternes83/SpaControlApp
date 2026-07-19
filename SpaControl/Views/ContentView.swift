@@ -32,6 +32,7 @@ struct ContentView: View {
             SettingsSheet()
         }
         .onAppear {
+            NotificationManager.shared.requestAuthorization()
             if BrokerSettings.host.isEmpty {
                 showSettings = true
             } else {
