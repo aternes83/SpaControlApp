@@ -12,7 +12,7 @@ struct StatusDashboardView: View {
                     StaleStatusBanner(lastUpdate: vm.lastStatusDate)
                 }
 
-                TemperatureControlView()
+                TemperatureDialView()
 
                 if vm.status?.fault == true {
                     FaultBannerView(code: vm.status?.faultCode ?? 0)
@@ -47,3 +47,14 @@ struct FaultBannerView: View {
         .cornerRadius(12)
     }
 }
+
+#if DEBUG
+#Preview("Dashboard") {
+    ZStack {
+        Color(red: 0.10, green: 0.15, blue: 0.22).ignoresSafeArea()
+        StatusDashboardView()
+            .environmentObject(SpaViewModel.preview())
+    }
+    .preferredColorScheme(.dark)
+}
+#endif
