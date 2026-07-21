@@ -9,9 +9,19 @@ struct SettingsSheet: View {
     @AppStorage(BrokerSettings.usernameKey) private var username: String = ""
     @AppStorage(BrokerSettings.passwordKey) private var password: String = ""
 
+    @State private var showWiFiWizard = false
+
     var body: some View {
         NavigationView {
             Form {
+                Section("Spa Controller") {
+                    Button {
+                        showWiFiWizard = true
+                    } label: {
+                        Label("Set up spa Wi‑Fi over Bluetooth", systemImage: "wifi")
+                    }
+                }
+
                 Section("Broker") {
                     TextField("Host", text: $host)
                         .keyboardType(.URL)
@@ -51,6 +61,9 @@ struct SettingsSheet: View {
                     Button("Cancel") { dismiss() }
                 }
             }
+        }
+        .sheet(isPresented: $showWiFiWizard) {
+            WiFiSetupWizardView()
         }
     }
 }
