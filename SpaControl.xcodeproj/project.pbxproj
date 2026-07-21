@@ -14,10 +14,12 @@
 		318BE739D96298AE73250392 /* PreviewSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E1F6956057060634463650 /* PreviewSupport.swift */; };
 		43E58BF334D05AEBEE09379A /* SpaControlApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC434F929B6F6E0B41E5719F /* SpaControlApp.swift */; };
 		5725FEF07EE3793292170EFF /* TempHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7964696D282A294C820B283E /* TempHistoryView.swift */; };
+		57EB6363C5EED92048F3F317 /* WiFiSetupWizardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4303C0CA587EF2293BA5EE2 /* WiFiSetupWizardView.swift */; };
 		72DD127E8BE250C98EBEBF36 /* ConnectionStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E63FEB3E4E7BE23A03318CD /* ConnectionStatusView.swift */; };
 		7A8E44BDEB647B828CC2DF2E /* StatusDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5F98E7367679FD138A64AD /* StatusDashboardView.swift */; };
 		807DFF3C6C9AB7EA840D6A77 /* FaultCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60C41C59A295C320B31E09D /* FaultCode.swift */; };
 		84B68F1CD857B5A90B88A4C3 /* BrokerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87135931A0298F9B7FCC4FC9 /* BrokerSettings.swift */; };
+		87B211AD997CC13F347BE854 /* WiFiNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AC1BCD3F87758BC563F18E /* WiFiNetwork.swift */; };
 		9D3002DB6443FB69DE467BA2 /* StaleStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F373F2FE26AC2ADE318F870 /* StaleStatusView.swift */; };
 		A9D46AC0CF10C138EA6909CB /* SpaStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B37C0A144D7BBF59259D36D /* SpaStatus.swift */; };
 		B558F76F844A827706C97093 /* LightEcoControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7021F05C1C4DB1A1031113 /* LightEcoControlView.swift */; };
@@ -26,6 +28,7 @@
 		DEDBDD3E7ED6D67A4ED855E1 /* PumpControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D2DC3899E8E3FE4B4E2E76 /* PumpControlView.swift */; };
 		E6BC39C1B03109F3F51163B8 /* TemperatureDialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB6335B5206510BB0310A2 /* TemperatureDialView.swift */; };
 		F5743EABB974EA9BBCEE6A55 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C7205B44D4CB523D47427B /* ContentView.swift */; };
+		F58B1361F7111E2B4026FE1A /* SpaBLEProvisioner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC5250DCCE4A355CB5384D2 /* SpaBLEProvisioner.swift */; };
 		FDAC9ABA900B4D58164084A0 /* TemperatureControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B142DC8133BA488443B03A9D /* TemperatureControlView.swift */; };
 		FF6EA27D2227E95ABAF2710C /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD3BB2B0949A6D26749B4C9 /* Theme.swift */; };
 /* End PBXBuildFile section */
@@ -34,11 +37,13 @@
 		1B37C0A144D7BBF59259D36D /* SpaStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaStatus.swift; sourceTree = "<group>"; };
 		1FD3BB2B0949A6D26749B4C9 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		3420B1B077E7F2551C8D89F5 /* SpaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaViewModel.swift; sourceTree = "<group>"; };
+		34AC1BCD3F87758BC563F18E /* WiFiNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiNetwork.swift; sourceTree = "<group>"; };
 		63BB6335B5206510BB0310A2 /* TemperatureDialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureDialView.swift; sourceTree = "<group>"; };
 		64C7205B44D4CB523D47427B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		6C07FDB56EA22173354AAAC6 /* SpaCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaCommand.swift; sourceTree = "<group>"; };
 		7964696D282A294C820B283E /* TempHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempHistoryView.swift; sourceTree = "<group>"; };
 		87135931A0298F9B7FCC4FC9 /* BrokerSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrokerSettings.swift; sourceTree = "<group>"; };
+		8BC5250DCCE4A355CB5384D2 /* SpaBLEProvisioner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaBLEProvisioner.swift; sourceTree = "<group>"; };
 		8E63FEB3E4E7BE23A03318CD /* ConnectionStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStatusView.swift; sourceTree = "<group>"; };
 		90D2DC3899E8E3FE4B4E2E76 /* PumpControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PumpControlView.swift; sourceTree = "<group>"; };
 		981D78CA1F0548B0CF72658E /* TempSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempSample.swift; sourceTree = "<group>"; };
@@ -48,6 +53,7 @@
 		B142DC8133BA488443B03A9D /* TemperatureControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureControlView.swift; sourceTree = "<group>"; };
 		B2D7D9B0871C5A3892059A8C /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		B60C41C59A295C320B31E09D /* FaultCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaultCode.swift; sourceTree = "<group>"; };
+		D4303C0CA587EF2293BA5EE2 /* WiFiSetupWizardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiSetupWizardView.swift; sourceTree = "<group>"; };
 		DE56A20B2CE60707A74051EC /* SpaControl.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = SpaControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7C786B265848E5881E7CC8A /* SettingsSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSheet.swift; sourceTree = "<group>"; };
 		EC434F929B6F6E0B41E5719F /* SpaControlApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaControlApp.swift; sourceTree = "<group>"; };
@@ -86,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				B2D7D9B0871C5A3892059A8C /* NotificationManager.swift */,
+				8BC5250DCCE4A355CB5384D2 /* SpaBLEProvisioner.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -111,6 +118,7 @@
 				B142DC8133BA488443B03A9D /* TemperatureControlView.swift */,
 				63BB6335B5206510BB0310A2 /* TemperatureDialView.swift */,
 				7964696D282A294C820B283E /* TempHistoryView.swift */,
+				D4303C0CA587EF2293BA5EE2 /* WiFiSetupWizardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -137,6 +145,7 @@
 				6C07FDB56EA22173354AAAC6 /* SpaCommand.swift */,
 				1B37C0A144D7BBF59259D36D /* SpaStatus.swift */,
 				981D78CA1F0548B0CF72658E /* TempSample.swift */,
+				34AC1BCD3F87758BC563F18E /* WiFiNetwork.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -213,6 +222,7 @@
 				318BE739D96298AE73250392 /* PreviewSupport.swift in Sources */,
 				DEDBDD3E7ED6D67A4ED855E1 /* PumpControlView.swift in Sources */,
 				D259E6204D2625E2818AB4F3 /* SettingsSheet.swift in Sources */,
+				F58B1361F7111E2B4026FE1A /* SpaBLEProvisioner.swift in Sources */,
 				1835A89B27B35F50FA9B4871 /* SpaCommand.swift in Sources */,
 				43E58BF334D05AEBEE09379A /* SpaControlApp.swift in Sources */,
 				A9D46AC0CF10C138EA6909CB /* SpaStatus.swift in Sources */,
@@ -224,6 +234,8 @@
 				FDAC9ABA900B4D58164084A0 /* TemperatureControlView.swift in Sources */,
 				E6BC39C1B03109F3F51163B8 /* TemperatureDialView.swift in Sources */,
 				FF6EA27D2227E95ABAF2710C /* Theme.swift in Sources */,
+				87B211AD997CC13F347BE854 /* WiFiNetwork.swift in Sources */,
+				57EB6363C5EED92048F3F317 /* WiFiSetupWizardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,6 +251,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = SpaControl;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "SpaControl uses Bluetooth to pair with the spa controller and set up its Wi‑Fi.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -384,6 +397,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = SpaControl;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "SpaControl uses Bluetooth to pair with the spa controller and set up its Wi‑Fi.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
