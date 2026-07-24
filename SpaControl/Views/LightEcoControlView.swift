@@ -18,18 +18,21 @@ struct LightEcoControlView: View {
                     vm.sendCommand(SpaCommand(light: $0))
                 }
 
+                // Eco and Max Jets are mutually exclusive — disable each while
+                // the other is active.
                 FeatureCard(label: "Eco Mode",
                             icon: "leaf.fill",
                             isOn: vm.status?.eco ?? false,
-                            activeColor: .green) {
+                            activeColor: .green,
+                            disabled: vm.status?.maxJet ?? false) {
                     vm.sendCommand(SpaCommand(eco: $0))
                 }
 
-                // Max Jets — toggle driven by the board's reported state
                 FeatureCard(label: "Max Jets",
                             icon: "flame.fill",
                             isOn: vm.status?.maxJet ?? false,
-                            activeColor: .orange) {
+                            activeColor: .orange,
+                            disabled: vm.status?.eco ?? false) {
                     vm.sendCommand(SpaCommand(maxJet: $0))
                 }
             }
@@ -42,6 +45,7 @@ struct FeatureCard: View {
     let icon: String
     let isOn: Bool
     let activeColor: Color
+    var disabled: Bool = false
     let onChange: (Bool) -> Void
 
     var body: some View {
@@ -62,5 +66,7 @@ struct FeatureCard: View {
             .overlay(RoundedRectangle(cornerRadius: 12)
                 .stroke(isOn ? activeColor.opacity(0.6) : Color.clear, lineWidth: 1.5))
         }
+        .disabled(disabled)
+        .opacity(disabled ? 0.5 : 1)
     }
 }
