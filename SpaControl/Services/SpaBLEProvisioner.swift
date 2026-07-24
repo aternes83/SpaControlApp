@@ -14,6 +14,14 @@ enum ProvisionPhase: Equatable {
     case failed(String)    // reason
 }
 
+/// MQTT broker settings read from the controller so the app can auto-configure.
+struct BrokerConfig: Equatable {
+    let host: String
+    let port: Int
+    let user: String
+    let password: String
+}
+
 /// BLE client for the ESP32 spa controller's Nordic UART Service. Connects over
 /// Bluetooth and drives the WiFi-provisioning protocol (scan / send credentials /
 /// receive result). Used only by the WiFi setup wizard; normal operation is MQTT.
@@ -22,6 +30,7 @@ final class SpaBLEProvisioner: NSObject, ObservableObject {
     @Published private(set) var networks: [WiFiNetwork] = []
     @Published private(set) var provision: ProvisionPhase = .idle
     @Published private(set) var deviceName: String?
+    @Published private(set) var broker: BrokerConfig?
 
     static let nus    = CBUUID(string: "6E400001-B5A3-F393-E0A9-E50E24DCCA9E")
     static let rxUUID = CBUUID(string: "6E400002-B5A3-F393-E0A9-E50E24DCCA9E")  // write
@@ -68,13 +77,18 @@ final class SpaBLEProvisioner: NSObject, ObservableObject {
         send(["wifi_ssid": ssid, "wifi_pw": password])
     }
 
+    /// Ask the controller for its MQTT broker settings (to auto-configure the app).
+    func requestBroker() {
+        send(["broker_get": 1])
+    }
+
     /// Tear down the BLE session (call when the wizard closes).
     func stop() {
         if central.state == .poweredOn { central.stopScan() }
         if let p = peripheral { central.cancelPeripheralConnection(p) }
         peripheral = nil; rxChar = nil; txChar = nil
         wantScan = false
-        phase = .idle; provision = .idle; networks = []
+        phase = .idle; provision = .idle; networks = []; broker = nil
     }
 
     // MARK: - Internal
@@ -161,6 +175,15 @@ final class SpaBLEProvisioner: NSObject, ObservableObject {
             case "fail":       provision = .failed(obj["err"] as? String ?? "unknown")
             default: break
             }
+            return
+        }
+        if let b = obj["broker"] as? [String: Any] {
+            broker = BrokerConfig(
+                host: b["host"] as? String ?? "",
+                port: (b["port"] as? NSNumber)?.intValue ?? 8883,
+                user: b["user"] as? String ?? "",
+                password: b["pw"] as? String ?? ""
+            )
             return
         }
         // Anything else (e.g. status frames {"t":...}) is ignored here.

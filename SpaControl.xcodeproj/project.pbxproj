@@ -17,12 +17,14 @@
 		57EB6363C5EED92048F3F317 /* WiFiSetupWizardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4303C0CA587EF2293BA5EE2 /* WiFiSetupWizardView.swift */; };
 		72DD127E8BE250C98EBEBF36 /* ConnectionStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E63FEB3E4E7BE23A03318CD /* ConnectionStatusView.swift */; };
 		7A8E44BDEB647B828CC2DF2E /* StatusDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5F98E7367679FD138A64AD /* StatusDashboardView.swift */; };
+		7B6B7147689E2AA401E139C9 /* CocoaMQTTWebSocket in Frameworks */ = {isa = PBXBuildFile; productRef = 540C8D226A68C21292F96B9C /* CocoaMQTTWebSocket */; };
 		807DFF3C6C9AB7EA840D6A77 /* FaultCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60C41C59A295C320B31E09D /* FaultCode.swift */; };
 		84B68F1CD857B5A90B88A4C3 /* BrokerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87135931A0298F9B7FCC4FC9 /* BrokerSettings.swift */; };
 		87B211AD997CC13F347BE854 /* WiFiNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AC1BCD3F87758BC563F18E /* WiFiNetwork.swift */; };
 		9D3002DB6443FB69DE467BA2 /* StaleStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F373F2FE26AC2ADE318F870 /* StaleStatusView.swift */; };
 		A9D46AC0CF10C138EA6909CB /* SpaStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B37C0A144D7BBF59259D36D /* SpaStatus.swift */; };
 		B558F76F844A827706C97093 /* LightEcoControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7021F05C1C4DB1A1031113 /* LightEcoControlView.swift */; };
+		BB8017133B928743911AA044 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5920F29B2B3ED975F4894AA3 /* Assets.xcassets */; };
 		C7CBECE298C79DBDD9207AF7 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D7D9B0871C5A3892059A8C /* NotificationManager.swift */; };
 		D259E6204D2625E2818AB4F3 /* SettingsSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C786B265848E5881E7CC8A /* SettingsSheet.swift */; };
 		DEDBDD3E7ED6D67A4ED855E1 /* PumpControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D2DC3899E8E3FE4B4E2E76 /* PumpControlView.swift */; };
@@ -38,6 +40,7 @@
 		1FD3BB2B0949A6D26749B4C9 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		3420B1B077E7F2551C8D89F5 /* SpaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaViewModel.swift; sourceTree = "<group>"; };
 		34AC1BCD3F87758BC563F18E /* WiFiNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiNetwork.swift; sourceTree = "<group>"; };
+		5920F29B2B3ED975F4894AA3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63BB6335B5206510BB0310A2 /* TemperatureDialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureDialView.swift; sourceTree = "<group>"; };
 		64C7205B44D4CB523D47427B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		6C07FDB56EA22173354AAAC6 /* SpaCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaCommand.swift; sourceTree = "<group>"; };
@@ -54,7 +57,7 @@
 		B2D7D9B0871C5A3892059A8C /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		B60C41C59A295C320B31E09D /* FaultCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaultCode.swift; sourceTree = "<group>"; };
 		D4303C0CA587EF2293BA5EE2 /* WiFiSetupWizardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiSetupWizardView.swift; sourceTree = "<group>"; };
-		DE56A20B2CE60707A74051EC /* SpaControl.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = SpaControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE56A20B2CE60707A74051EC /* SpaControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7C786B265848E5881E7CC8A /* SettingsSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSheet.swift; sourceTree = "<group>"; };
 		EC434F929B6F6E0B41E5719F /* SpaControlApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaControlApp.swift; sourceTree = "<group>"; };
 		FF7021F05C1C4DB1A1031113 /* LightEcoControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightEcoControlView.swift; sourceTree = "<group>"; };
@@ -66,6 +69,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				267F68C8B93AF88DD514F0D7 /* CocoaMQTT in Frameworks */,
+				7B6B7147689E2AA401E139C9 /* CocoaMQTTWebSocket in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +134,7 @@
 				778A429D33CD87AAD6934BC9 /* Services */,
 				7F12BB53A8A9AA2361B3FB9B /* ViewModels */,
 				A53179085715589C48C17CE2 /* Views */,
+				5920F29B2B3ED975F4894AA3 /* Assets.xcassets */,
 				A6E1F6956057060634463650 /* PreviewSupport.swift */,
 				EC434F929B6F6E0B41E5719F /* SpaControlApp.swift */,
 				1FD3BB2B0949A6D26749B4C9 /* Theme.swift */,
@@ -158,6 +163,7 @@
 			buildConfigurationList = 72CF3FEB773F18921DA9FE5D /* Build configuration list for PBXNativeTarget "SpaControl" */;
 			buildPhases = (
 				DE4B9B0EB204DF6D77E2F1C5 /* Sources */,
+				6431823FDC99E9030C136D4E /* Resources */,
 				A394928AD28E4BBB896B0ECD /* Frameworks */,
 			);
 			buildRules = (
@@ -167,6 +173,7 @@
 			name = SpaControl;
 			packageProductDependencies = (
 				CF479A42E259BA2A3BCFDE1B /* CocoaMQTT */,
+				540C8D226A68C21292F96B9C /* CocoaMQTTWebSocket */,
 			);
 			productName = SpaControl;
 			productReference = DE56A20B2CE60707A74051EC /* SpaControl.app */;
@@ -208,6 +215,17 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		6431823FDC99E9030C136D4E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB8017133B928743911AA044 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DE4B9B0EB204DF6D77E2F1C5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -246,9 +264,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = JK9ZS9GNST;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = SpaControl;
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "SpaControl uses Bluetooth to pair with the spa controller and set up its Wi‑Fi.";
@@ -256,14 +274,9 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.spacontrol.SpaControl;
 				PRODUCT_NAME = SpaControl;
-				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -272,119 +285,16 @@
 		ABEF9978BCCABFA8EAD9F26B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"$(inherited)",
-					"DEBUG=1",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		BADAB451D511F9782D21F833 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -392,9 +302,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = JK9ZS9GNST;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = SpaControl;
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "SpaControl uses Bluetooth to pair with the spa controller and set up its Wi‑Fi.";
@@ -402,14 +312,9 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.spacontrol.SpaControl;
 				PRODUCT_NAME = SpaControl;
-				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -450,6 +355,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		540C8D226A68C21292F96B9C /* CocoaMQTTWebSocket */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 08411736C08DA11C9FFBE778 /* XCRemoteSwiftPackageReference "CocoaMQTT" */;
+			productName = CocoaMQTTWebSocket;
+		};
 		CF479A42E259BA2A3BCFDE1B /* CocoaMQTT */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 08411736C08DA11C9FFBE778 /* XCRemoteSwiftPackageReference "CocoaMQTT" */;

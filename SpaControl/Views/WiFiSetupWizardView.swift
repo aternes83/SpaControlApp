@@ -6,14 +6,18 @@ import UIKit
 /// Multi-step wizard: pair the phone to the spa controller over Bluetooth, then
 /// use that link to get the controller onto a WiFi network.
 struct WiFiSetupWizardView: View {
+    /// Called when the wizard closes. `success` is true only after a confirmed
+    /// WiFi connection (the user tapped Done); false for Close/cancel.
+    var onFinish: (Bool) -> Void = { _ in }
+
     @StateObject private var ble = SpaBLEProvisioner()
-    @Environment(\.dismiss) private var dismiss
 
     @State private var step: Step = .connect
     @State private var chosenSSID = ""
     @State private var chosenSecured = true
     @State private var manualMode = false
     @State private var password = ""
+    @State private var brokerReady = false
 
     enum Step { case connect, chooseNetwork, password, provisioning, result }
 
@@ -31,7 +35,7 @@ struct WiFiSetupWizardView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Close") { finish() }
+                    Button("Close") { finish(success: false) }
                 }
             }
         }
@@ -45,8 +49,21 @@ struct WiFiSetupWizardView: View {
         }
         .onChange(of: ble.provision) { p in
             switch p {
-            case .success, .failed: step = .result
-            default: break
+            case .success:
+                ble.requestBroker()   // pull broker settings to finish onboarding
+                // Fallback so Done isn't blocked if the board reports no broker.
+                DispatchQueue.main.asyncAfter(deadline: .now() + 5) { brokerReady = true }
+                step = .result
+            case .failed:
+                step = .result
+            default:
+                break
+            }
+        }
+        .onChange(of: ble.broker) { b in
+            if let b {
+                BrokerSettings.save(host: b.host, port: b.port, username: b.user, password: b.password)
+                brokerReady = true
             }
         }
     }
@@ -238,8 +255,16 @@ struct WiFiSetupWizardView: View {
                     Text("IP \(ip)").font(.system(.footnote, design: .monospaced))
                         .foregroundColor(.secondary)
                 }
-                Button { finish() } label: { Text("Done").frame(maxWidth: .infinity) }
-                    .buttonStyle(.borderedProminent).tint(Theme.good).padding(.top, 8)
+                if brokerReady {
+                    Button { finish(success: true) } label: { Text("Done").frame(maxWidth: .infinity) }
+                        .buttonStyle(.borderedProminent).tint(Theme.good).padding(.top, 8)
+                } else {
+                    HStack(spacing: 8) {
+                        ProgressView().tint(Theme.water)
+                        Text("Finishing setup…").font(.subheadline).foregroundColor(.secondary)
+                    }
+                    .padding(.top, 8)
+                }
                 Spacer()
             }
         } else {
@@ -255,7 +280,7 @@ struct WiFiSetupWizardView: View {
                     Text("Try Again").frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.borderedProminent).tint(Theme.water).padding(.top, 8)
-                Button("Close") { finish() }.foregroundColor(.secondary)
+                Button("Close") { finish(success: false) }.foregroundColor(.secondary)
                 Spacer()
             }
         }
@@ -271,9 +296,9 @@ struct WiFiSetupWizardView: View {
 
     // MARK: - Helpers
 
-    private func finish() {
+    private func finish(success: Bool) {
         ble.stop()
-        dismiss()
+        onFinish(success)
     }
 
     private func openSystemSettings() {
