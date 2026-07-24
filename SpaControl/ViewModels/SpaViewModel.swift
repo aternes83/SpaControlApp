@@ -162,6 +162,7 @@ class SpaViewModel: NSObject, ObservableObject {
         if let v = cmd.pump3   { s.pump3 = v }
         if let v = cmd.light   { s.light = v }
         if let v = cmd.eco     { s.eco = v }
+        if let v = cmd.maxJet  { s.maxJet = v }
         status = s
     }
 }

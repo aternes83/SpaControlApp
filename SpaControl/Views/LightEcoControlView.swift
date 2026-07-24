@@ -2,7 +2,6 @@ import SwiftUI
 
 struct LightEcoControlView: View {
     @EnvironmentObject var vm: SpaViewModel
-    @State private var maxJetActive = false
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -26,30 +25,12 @@ struct LightEcoControlView: View {
                     vm.sendCommand(SpaCommand(eco: $0))
                 }
 
-                // Max Jets — command only; mirror the 20-min auto-off locally
-                Button {
-                    maxJetActive = true
-                    vm.sendCommand(SpaCommand(maxJet: true))
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1200) {
-                        maxJetActive = false
-                    }
-                } label: {
-                    VStack(spacing: 8) {
-                        Image(systemName: "flame.fill")
-                            .font(.title2)
-                            .foregroundColor(maxJetActive ? .orange : .secondary)
-                        Text("Max Jets").font(.caption).foregroundColor(.white)
-                        Text(maxJetActive ? "20 min" : "Off")
-                            .font(.caption2)
-                            .foregroundColor(maxJetActive ? .orange : .secondary)
-                    }
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color(red: 0.14, green: 0.20, blue: 0.28))
-                    .cornerRadius(12)
-                    .overlay(RoundedRectangle(cornerRadius: 12)
-                        .stroke(maxJetActive ? Color.orange.opacity(0.6) : Color.clear,
-                                lineWidth: 1.5))
+                // Max Jets — toggle driven by the board's reported state
+                FeatureCard(label: "Max Jets",
+                            icon: "flame.fill",
+                            isOn: vm.status?.maxJet ?? false,
+                            activeColor: .orange) {
+                    vm.sendCommand(SpaCommand(maxJet: $0))
                 }
             }
         }
