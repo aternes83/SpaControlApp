@@ -3,6 +3,13 @@ import SwiftUI
 struct PumpControlView: View {
     @EnvironmentObject var vm: SpaViewModel
 
+    /// The controller forces Pump 1 on to circulate water for the heater whenever
+    /// the spa is below setpoint, so turning it "Off" has no effect then.
+    private var callingForHeat: Bool {
+        guard let s = vm.status else { return false }
+        return s.tempF < s.setpoint
+    }
+
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("PUMPS")
@@ -10,25 +17,29 @@ struct PumpControlView: View {
                 .foregroundColor(.secondary)
                 .padding(.horizontal, 4)
 
-            // Pump 1 — three-speed segmented picker
+            // Pump 1 — three-speed segmented control (Off disabled while heating)
             VStack(spacing: 10) {
                 HStack {
                     Image(systemName: "water.waves").foregroundColor(.teal)
                     Text("Pump 1").foregroundColor(.white)
                     Spacer()
-                    Text(["Off", "Low", "High"][vm.status?.pump1 ?? 0])
-                        .font(.caption)
-                        .foregroundColor(.secondary)
+                    if callingForHeat {
+                        Label("Heating", systemImage: "flame.fill")
+                            .font(.caption2).foregroundColor(.orange)
+                    } else {
+                        Text(["Off", "Low", "High"][vm.status?.pump1 ?? 0])
+                            .font(.caption).foregroundColor(.secondary)
+                    }
                 }
-                Picker("Pump 1", selection: Binding(
-                    get: { vm.status?.pump1 ?? 0 },
-                    set: { vm.sendCommand(SpaCommand(pump1: $0)) }
-                )) {
-                    Text("Off").tag(0)
-                    Text("Low").tag(1)
-                    Text("High").tag(2)
+                Pump1Segmented(current: vm.status?.pump1 ?? 0,
+                               offDisabled: callingForHeat) {
+                    vm.sendCommand(SpaCommand(pump1: $0))
                 }
-                .pickerStyle(.segmented)
+                if callingForHeat {
+                    Text("Pump stays on to circulate water while heating.")
+                        .font(.caption2).foregroundColor(.secondary)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
             }
             .padding()
             .background(Color(red: 0.14, green: 0.20, blue: 0.28))
@@ -46,6 +57,40 @@ struct PumpControlView: View {
                 }
             }
         }
+    }
+}
+
+/// Off/Low/High segmented control where the "Off" segment can be disabled
+/// (SwiftUI's segmented Picker can't disable an individual segment).
+struct Pump1Segmented: View {
+    let current: Int
+    let offDisabled: Bool
+    let onSelect: (Int) -> Void
+
+    private let segments = [(0, "Off"), (1, "Low"), (2, "High")]
+
+    var body: some View {
+        HStack(spacing: 4) {
+            ForEach(segments, id: \.0) { value, label in
+                let selected = current == value
+                let disabled = value == 0 && offDisabled
+                Button { onSelect(value) } label: {
+                    Text(label)
+                        .font(.subheadline).fontWeight(.medium)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 7)
+                        .foregroundColor(disabled ? Color.white.opacity(0.25)
+                                         : selected ? .black : .white)
+                        .background(selected ? Color.teal : Color.clear)
+                        .clipShape(RoundedRectangle(cornerRadius: 7))
+                }
+                .buttonStyle(.plain)
+                .disabled(disabled)
+            }
+        }
+        .padding(3)
+        .background(Color.black.opacity(0.25))
+        .clipShape(RoundedRectangle(cornerRadius: 9))
     }
 }
 

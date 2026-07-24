@@ -1,5 +1,6 @@
 import Foundation
 import CocoaMQTT
+import CocoaMQTTWebSocket
 
 enum ConnectionState: Equatable {
     case disconnected
@@ -119,11 +120,17 @@ class SpaViewModel: NSObject, ObservableObject {
         intentionalDisconnect = false
         mqttClient?.disconnect()
 
+        // NOTE: CocoaMQTT's GCDAsyncSocket TLS (MqttCocoaAsyncSocket) does not
+        // establish TLS on recent iOS SDKs, so we use the WebSocket transport
+        // (modern networking) over HiveMQ Cloud's WSS endpoint (port 8884).
         let clientID = "SpaControl-\(UUID().uuidString.prefix(8))"
-        let client   = CocoaMQTT(clientID: clientID, host: host, port: UInt16(port))
+        let useTLS = (port == 8883 || port == 8884)
+        let wsPort: UInt16 = (port == 8883) ? 8884 : UInt16(port)
+        let socket = CocoaMQTTWebSocket(uri: "/mqtt")
+        socket.enableSSL = useTLS
+        let client = CocoaMQTT(clientID: clientID, host: host, port: wsPort, socket: socket)
         client.username  = username.isEmpty ? nil : username
         client.password  = password.isEmpty ? nil : password
-        client.enableSSL = (port == 8883)
         client.keepAlive = 60
         client.delegate  = self
 
@@ -138,9 +145,24 @@ class SpaViewModel: NSObject, ObservableObject {
     }
 
     func sendCommand(_ command: SpaCommand) {
+        // Optimistically reflect the change in the UI immediately; the board's
+        // next status publish reconciles it (rather than waiting up to one
+        // publish interval for the echo).
+        applyOptimistic(command)
         guard let data = try? Self.encoder.encode(command),
               let json = String(data: data, encoding: .utf8) else { return }
         mqttClient?.publish("spa/commands", withString: json, qos: .qos1)
+    }
+
+    private func applyOptimistic(_ cmd: SpaCommand) {
+        guard var s = status else { return }
+        if let v = cmd.setTemp { s.setpoint = v }
+        if let v = cmd.pump1   { s.pump1 = v }
+        if let v = cmd.pump2   { s.pump2 = v }
+        if let v = cmd.pump3   { s.pump3 = v }
+        if let v = cmd.light   { s.light = v }
+        if let v = cmd.eco     { s.eco = v }
+        status = s
     }
 }
 
@@ -175,6 +197,16 @@ extension SpaViewModel: CocoaMQTTDelegate {
             guard !self.intentionalDisconnect else { return }
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) { self.connect() }
         }
+    }
+
+    // (debug logging removed)
+
+    // Answer the WebSocket transport's TLS auth challenge — without this the
+    // handshake hangs forever (the library's default trust closure is a no-op).
+    func mqttUrlSession(_ mqtt: CocoaMQTT, didReceiveTrust trust: SecTrust,
+                        didReceiveChallenge challenge: URLAuthenticationChallenge,
+                        completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+        completionHandler(.performDefaultHandling, nil)
     }
 
     // Required stubs
