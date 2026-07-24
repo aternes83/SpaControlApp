@@ -63,7 +63,15 @@ struct SettingsSheet: View {
             }
         }
         .sheet(isPresented: $showWiFiWizard) {
-            WiFiSetupWizardView()
+            WiFiSetupWizardView { success in
+                if success {
+                    // Spa is online now — reconnect and return to the dashboard.
+                    if !host.isEmpty { vm.connect() }
+                    dismiss()
+                } else {
+                    showWiFiWizard = false
+                }
+            }
         }
     }
 }

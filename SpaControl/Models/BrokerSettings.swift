@@ -19,4 +19,13 @@ enum BrokerSettings {
     static var password: String {
         UserDefaults.standard.string(forKey: passwordKey) ?? ""
     }
+
+    /// Persist broker settings (e.g. fetched from the controller over BLE).
+    static func save(host: String, port: Int, username: String, password: String) {
+        let d = UserDefaults.standard
+        d.set(host, forKey: hostKey)
+        d.set(port, forKey: portKey)
+        d.set(username, forKey: usernameKey)
+        d.set(password, forKey: passwordKey)
+    }
 }
