@@ -32,11 +32,11 @@ struct ConnectionStatusView: View {
     var body: some View {
         HStack(spacing: 5) {
             Circle().fill(dot).frame(width: 8, height: 8)
-            Text(label).font(.caption).foregroundColor(dot)
+            Text(label)
+                .font(.caption).fontWeight(.medium)
+                .foregroundColor(dot)
+                .lineLimit(1)
         }
-        .padding(.horizontal, 10)
-        .padding(.vertical, 5)
-        .background(dot.opacity(0.15))
-        .clipShape(Capsule())
+        .fixedSize()   // don't let the nav bar compress/truncate the label
     }
 }
