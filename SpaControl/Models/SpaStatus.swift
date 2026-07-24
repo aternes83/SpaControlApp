@@ -9,6 +9,7 @@ struct SpaStatus: Decodable {
     var pump3:     Bool
     var light:     Bool
     var eco:       Bool
+    var maxJet:    Bool?    // optional so status from older firmware still decodes
     var fault:     Bool
     var faultCode: Int
 }
