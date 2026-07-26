@@ -37,6 +37,8 @@ struct ConnectionStatusView: View {
                 .foregroundColor(dot)
                 .lineLimit(1)
         }
-        .fixedSize()   // don't let the nav bar compress/truncate the label
+        .fixedSize()          // don't let the nav bar compress/truncate the label
+        .padding(.trailing, 6) // balance the toolbar's glass background so its
+                               // right edge rounds symmetrically instead of clipping
     }
 }

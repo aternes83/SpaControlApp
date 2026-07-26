@@ -21,14 +21,18 @@
 		807DFF3C6C9AB7EA840D6A77 /* FaultCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60C41C59A295C320B31E09D /* FaultCode.swift */; };
 		84B68F1CD857B5A90B88A4C3 /* BrokerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87135931A0298F9B7FCC4FC9 /* BrokerSettings.swift */; };
 		87B211AD997CC13F347BE854 /* WiFiNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AC1BCD3F87758BC563F18E /* WiFiNetwork.swift */; };
+		896AF61F9A811BC9C34FF7B4 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA170F6E02F28888859E0A3B /* ScheduleView.swift */; };
 		9D3002DB6443FB69DE467BA2 /* StaleStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F373F2FE26AC2ADE318F870 /* StaleStatusView.swift */; };
 		A9D46AC0CF10C138EA6909CB /* SpaStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B37C0A144D7BBF59259D36D /* SpaStatus.swift */; };
 		B558F76F844A827706C97093 /* LightEcoControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7021F05C1C4DB1A1031113 /* LightEcoControlView.swift */; };
 		BB8017133B928743911AA044 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5920F29B2B3ED975F4894AA3 /* Assets.xcassets */; };
+		C57729E8A1668F0AD36561EF /* ScheduleStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4413B76A306604A596666869 /* ScheduleStore.swift */; };
 		C7CBECE298C79DBDD9207AF7 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D7D9B0871C5A3892059A8C /* NotificationManager.swift */; };
 		D259E6204D2625E2818AB4F3 /* SettingsSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C786B265848E5881E7CC8A /* SettingsSheet.swift */; };
 		DEDBDD3E7ED6D67A4ED855E1 /* PumpControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D2DC3899E8E3FE4B4E2E76 /* PumpControlView.swift */; };
+		DF44C8E4A4A63AEC2479BB7B /* ScheduleWindowEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9056EAC398688BF3218DD3 /* ScheduleWindowEditor.swift */; };
 		E6BC39C1B03109F3F51163B8 /* TemperatureDialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB6335B5206510BB0310A2 /* TemperatureDialView.swift */; };
+		E7ECDEFD20E2A085A5D6870A /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD9339C7F7CB9C293B6FA36 /* Schedule.swift */; };
 		F5743EABB974EA9BBCEE6A55 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C7205B44D4CB523D47427B /* ContentView.swift */; };
 		F58B1361F7111E2B4026FE1A /* SpaBLEProvisioner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC5250DCCE4A355CB5384D2 /* SpaBLEProvisioner.swift */; };
 		FDAC9ABA900B4D58164084A0 /* TemperatureControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B142DC8133BA488443B03A9D /* TemperatureControlView.swift */; };
@@ -40,6 +44,7 @@
 		1FD3BB2B0949A6D26749B4C9 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		3420B1B077E7F2551C8D89F5 /* SpaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaViewModel.swift; sourceTree = "<group>"; };
 		34AC1BCD3F87758BC563F18E /* WiFiNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiNetwork.swift; sourceTree = "<group>"; };
+		4413B76A306604A596666869 /* ScheduleStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleStore.swift; sourceTree = "<group>"; };
 		5920F29B2B3ED975F4894AA3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63BB6335B5206510BB0310A2 /* TemperatureDialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureDialView.swift; sourceTree = "<group>"; };
 		64C7205B44D4CB523D47427B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -56,10 +61,13 @@
 		B142DC8133BA488443B03A9D /* TemperatureControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureControlView.swift; sourceTree = "<group>"; };
 		B2D7D9B0871C5A3892059A8C /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		B60C41C59A295C320B31E09D /* FaultCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaultCode.swift; sourceTree = "<group>"; };
+		CA170F6E02F28888859E0A3B /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 		D4303C0CA587EF2293BA5EE2 /* WiFiSetupWizardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiSetupWizardView.swift; sourceTree = "<group>"; };
 		DE56A20B2CE60707A74051EC /* SpaControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7C786B265848E5881E7CC8A /* SettingsSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSheet.swift; sourceTree = "<group>"; };
 		EC434F929B6F6E0B41E5719F /* SpaControlApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaControlApp.swift; sourceTree = "<group>"; };
+		FA9056EAC398688BF3218DD3 /* ScheduleWindowEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleWindowEditor.swift; sourceTree = "<group>"; };
+		FBD9339C7F7CB9C293B6FA36 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		FF7021F05C1C4DB1A1031113 /* LightEcoControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightEcoControlView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,6 +112,7 @@
 		7F12BB53A8A9AA2361B3FB9B /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				4413B76A306604A596666869 /* ScheduleStore.swift */,
 				3420B1B077E7F2551C8D89F5 /* SpaViewModel.swift */,
 			);
 			path = ViewModels;
@@ -116,6 +125,8 @@
 				64C7205B44D4CB523D47427B /* ContentView.swift */,
 				FF7021F05C1C4DB1A1031113 /* LightEcoControlView.swift */,
 				90D2DC3899E8E3FE4B4E2E76 /* PumpControlView.swift */,
+				CA170F6E02F28888859E0A3B /* ScheduleView.swift */,
+				FA9056EAC398688BF3218DD3 /* ScheduleWindowEditor.swift */,
 				E7C786B265848E5881E7CC8A /* SettingsSheet.swift */,
 				9F373F2FE26AC2ADE318F870 /* StaleStatusView.swift */,
 				AF5F98E7367679FD138A64AD /* StatusDashboardView.swift */,
@@ -147,6 +158,7 @@
 			children = (
 				87135931A0298F9B7FCC4FC9 /* BrokerSettings.swift */,
 				B60C41C59A295C320B31E09D /* FaultCode.swift */,
+				FBD9339C7F7CB9C293B6FA36 /* Schedule.swift */,
 				6C07FDB56EA22173354AAAC6 /* SpaCommand.swift */,
 				1B37C0A144D7BBF59259D36D /* SpaStatus.swift */,
 				981D78CA1F0548B0CF72658E /* TempSample.swift */,
@@ -239,6 +251,10 @@
 				C7CBECE298C79DBDD9207AF7 /* NotificationManager.swift in Sources */,
 				318BE739D96298AE73250392 /* PreviewSupport.swift in Sources */,
 				DEDBDD3E7ED6D67A4ED855E1 /* PumpControlView.swift in Sources */,
+				E7ECDEFD20E2A085A5D6870A /* Schedule.swift in Sources */,
+				C57729E8A1668F0AD36561EF /* ScheduleStore.swift in Sources */,
+				896AF61F9A811BC9C34FF7B4 /* ScheduleView.swift in Sources */,
+				DF44C8E4A4A63AEC2479BB7B /* ScheduleWindowEditor.swift in Sources */,
 				D259E6204D2625E2818AB4F3 /* SettingsSheet.swift in Sources */,
 				F58B1361F7111E2B4026FE1A /* SpaBLEProvisioner.swift in Sources */,
 				1835A89B27B35F50FA9B4871 /* SpaCommand.swift in Sources */,
@@ -267,6 +283,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JK9ZS9GNST;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = SpaControl;
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "SpaControl uses Bluetooth to pair with the spa controller and set up its Wi‑Fi.";
@@ -277,6 +297,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.spacontrol.SpaControl;
 				PRODUCT_NAME = SpaControl;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
