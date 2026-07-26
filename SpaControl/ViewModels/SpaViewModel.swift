@@ -154,6 +154,17 @@ class SpaViewModel: NSObject, ObservableObject {
         mqttClient?.publish("spa/commands", withString: json, qos: .qos1)
     }
 
+    /// Push the full schedule to the controller. Sent whenever the user edits it
+    /// and once on every (re)connect, so the board's persisted copy stays in sync
+    /// with the app. No optimistic state — the board echoes `schedule_on`/`_active`.
+    func sendSchedule(_ dto: ScheduleDTO) {
+        guard connectionState == .connected else { return }
+        let cmd = SpaCommand(schedule: dto)
+        guard let data = try? Self.encoder.encode(cmd),
+              let json = String(data: data, encoding: .utf8) else { return }
+        mqttClient?.publish("spa/commands", withString: json, qos: .qos1)
+    }
+
     private func applyOptimistic(_ cmd: SpaCommand) {
         guard var s = status else { return }
         if let v = cmd.setTemp { s.setpoint = v }

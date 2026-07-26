@@ -10,4 +10,5 @@ struct SpaCommand: Encodable {
     var light:   Bool?
     var eco:     Bool?
     var maxJet:  Bool?
+    var schedule: ScheduleDTO?
 }

@@ -23,6 +23,10 @@ targets:
       - package: CocoaMQTT
         product: CocoaMQTTWebSocket
     settings:
+      configs:
+        Debug:
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: "DEBUG $(inherited)"
+          GCC_PREPROCESSOR_DEFINITIONS: "DEBUG=1 $(inherited)"
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.spacontrol.SpaControl
         PRODUCT_NAME: SpaControl

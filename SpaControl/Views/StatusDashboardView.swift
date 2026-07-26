@@ -20,8 +20,6 @@ struct StatusDashboardView: View {
 
                 PumpControlView()
                 LightEcoControlView()
-
-                TempHistoryView(samples: vm.tempHistory)
             }
             .padding()
         }

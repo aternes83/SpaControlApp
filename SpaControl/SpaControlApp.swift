@@ -3,6 +3,7 @@ import SwiftUI
 @main
 struct SpaControlApp: App {
     @StateObject private var vm = SpaViewModel()
+    @StateObject private var scheduleStore = ScheduleStore()
 
     init() {
         // Register the notification delegate so fault alerts present even while
@@ -14,6 +15,7 @@ struct SpaControlApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(vm)
+                .environmentObject(scheduleStore)
                 .preferredColorScheme(.dark)
         }
     }

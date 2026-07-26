@@ -12,4 +12,6 @@ struct SpaStatus: Decodable {
     var maxJet:    Bool?    // optional so status from older firmware still decodes
     var fault:     Bool
     var faultCode: Int
+    var scheduleOn:     Bool?   // schedule feature enabled on the controller
+    var scheduleActive: Bool?   // a heat window is currently active
 }

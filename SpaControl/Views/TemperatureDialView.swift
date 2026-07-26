@@ -111,12 +111,15 @@ struct TemperatureDialView: View {
                      with: .color(.white))
         }
 
-        // Draggable target knob (amber, dark rim, white core)
+        // Draggable target knob (amber, dark rim, white core). Enlarged for an
+        // easier drag target; grows slightly more while actively dragging.
+        let kr: CGFloat = dragging ? 16 : 14
         let k = point(angle(of: target), r, c)
-        let knob = CGRect(x: k.x - 11, y: k.y - 11, width: 22, height: 22)
+        let knob = CGRect(x: k.x - kr, y: k.y - kr, width: kr * 2, height: kr * 2)
         ctx.fill(Path(ellipseIn: knob), with: .color(Theme.heat))
-        ctx.stroke(Path(ellipseIn: knob), with: .color(Theme.screenBg), lineWidth: 2.5)
-        ctx.fill(Path(ellipseIn: CGRect(x: k.x - 3.6, y: k.y - 3.6, width: 7.2, height: 7.2)),
+        ctx.stroke(Path(ellipseIn: knob), with: .color(Theme.screenBg), lineWidth: 3)
+        let core: CGFloat = 5
+        ctx.fill(Path(ellipseIn: CGRect(x: k.x - core, y: k.y - core, width: core * 2, height: core * 2)),
                  with: .color(.white))
     }
 
