@@ -33,10 +33,11 @@ class SpaViewModel: NSObject, ObservableObject {
     private var intentionalDisconnect = false
     private var stalenessTimer: Timer?
 
-    /// Last observed fault state, for edge-triggered notifications. nil until the
-    /// first status after a (re)connect, so a persistent fault does not re-notify
-    /// on every reconnect.
-    private var previousFault: (faulted: Bool, code: Int)?
+    /// Edge-detects spa conditions from the status stream and raises the
+    /// notifications. Re-baselined on disconnect so reconnects don't replay alerts.
+    private let alertMonitor = SpaAlertMonitor()
+    /// Guards the update check to once per connection.
+    private var updateCheckedThisConnection = false
 
     override init() {
         super.init()
@@ -67,7 +68,11 @@ class SpaViewModel: NSObject, ObservableObject {
         lastStatusDate = Date()
         isStale = false
         appendHistory(parsed)
-        checkFaultTransition(parsed)
+        alertMonitor.process(parsed)   // faults, freeze, reached-target, stall, sensor, offline
+        if !updateCheckedThisConnection {
+            updateCheckedThisConnection = true
+            UpdateChecker.check(firmwareVersion: parsed.fw)
+        }
     }
 
     private func appendHistory(_ parsed: SpaStatus) {
@@ -77,21 +82,6 @@ class SpaViewModel: NSObject, ObservableObject {
         if tempHistory.count > Self.historyMaxCount {
             tempHistory.removeFirst(tempHistory.count - Self.historyMaxCount)
         }
-    }
-
-    /// Fire a local notification only on fault edges: newly faulted, a changed
-    /// fault code, or a fault clearing. The first status after connect just sets
-    /// the baseline (previousFault == nil) so we never notify on reconnect.
-    private func checkFaultTransition(_ parsed: SpaStatus) {
-        let current = (faulted: parsed.fault, code: parsed.faultCode)
-        if let prev = previousFault {
-            if current.faulted && (!prev.faulted || prev.code != current.code) {
-                NotificationManager.shared.postFault(code: current.code)
-            } else if !current.faulted && prev.faulted {
-                NotificationManager.shared.postFaultCleared()
-            }
-        }
-        previousFault = current
     }
 
     private static let decoder: JSONDecoder = {
@@ -185,6 +175,7 @@ extension SpaViewModel: CocoaMQTTDelegate {
         DispatchQueue.main.async {
             if ack == .accept {
                 self.connectionState = .connected
+                self.updateCheckedThisConnection = false
                 mqtt.subscribe("spa/status", qos: .qos1)
             } else {
                 self.connectionState = .error("Refused: \(ack)")
@@ -205,8 +196,13 @@ extension SpaViewModel: CocoaMQTTDelegate {
             self.status = nil
             self.lastStatusDate = nil
             self.isStale = false
-            self.previousFault = nil   // re-baseline; don't re-notify on reconnect
-            guard !self.intentionalDisconnect else { return }
+            self.alertMonitor.reset()   // re-baseline; don't re-notify on reconnect
+            // Keep the pending 30-min offline alarm on an unexpected drop (the spa
+            // may truly be down); only clear it when the user disconnects.
+            if self.intentionalDisconnect {
+                NotificationManager.shared.cancelOffline()
+                return
+            }
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) { self.connect() }
         }
     }

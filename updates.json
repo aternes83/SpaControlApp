@@ -1,0 +1,10 @@
+{
+  "app": {
+    "latest": "1.1.0",
+    "notes": "Smart scheduler and spa alert notifications."
+  },
+  "firmware": {
+    "latest": "1.1.0",
+    "notes": "Time-of-Day smart schedule enforcement."
+  }
+}

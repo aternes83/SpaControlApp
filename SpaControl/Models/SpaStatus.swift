@@ -14,4 +14,5 @@ struct SpaStatus: Decodable {
     var faultCode: Int
     var scheduleOn:     Bool?   // schedule feature enabled on the controller
     var scheduleActive: Bool?   // a heat window is currently active
+    var fw:             String? // controller firmware version (for update checks)
 }

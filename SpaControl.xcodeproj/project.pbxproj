@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02D50414AB86B61CDA26089C /* UpdateChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBAB174B0B1C187124CAA675 /* UpdateChecker.swift */; };
 		1835A89B27B35F50FA9B4871 /* SpaCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C07FDB56EA22173354AAAC6 /* SpaCommand.swift */; };
 		1B229DA6C734776551EB38D6 /* TempSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981D78CA1F0548B0CF72658E /* TempSample.swift */; };
 		267F68C8B93AF88DD514F0D7 /* CocoaMQTT in Frameworks */ = {isa = PBXBuildFile; productRef = CF479A42E259BA2A3BCFDE1B /* CocoaMQTT */; };
@@ -18,6 +19,7 @@
 		72DD127E8BE250C98EBEBF36 /* ConnectionStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E63FEB3E4E7BE23A03318CD /* ConnectionStatusView.swift */; };
 		7A8E44BDEB647B828CC2DF2E /* StatusDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5F98E7367679FD138A64AD /* StatusDashboardView.swift */; };
 		7B6B7147689E2AA401E139C9 /* CocoaMQTTWebSocket in Frameworks */ = {isa = PBXBuildFile; productRef = 540C8D226A68C21292F96B9C /* CocoaMQTTWebSocket */; };
+		7B90E774BEC2DC76A8C4D529 /* NotificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C6974A435140E958A31894 /* NotificationSettings.swift */; };
 		807DFF3C6C9AB7EA840D6A77 /* FaultCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60C41C59A295C320B31E09D /* FaultCode.swift */; };
 		84B68F1CD857B5A90B88A4C3 /* BrokerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87135931A0298F9B7FCC4FC9 /* BrokerSettings.swift */; };
 		87B211AD997CC13F347BE854 /* WiFiNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AC1BCD3F87758BC563F18E /* WiFiNetwork.swift */; };
@@ -26,9 +28,11 @@
 		A9D46AC0CF10C138EA6909CB /* SpaStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B37C0A144D7BBF59259D36D /* SpaStatus.swift */; };
 		B558F76F844A827706C97093 /* LightEcoControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7021F05C1C4DB1A1031113 /* LightEcoControlView.swift */; };
 		BB8017133B928743911AA044 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5920F29B2B3ED975F4894AA3 /* Assets.xcassets */; };
+		C55C44644F5A73734CC548B3 /* SpaAlertMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971217C2B9B653CF2512AA0A /* SpaAlertMonitor.swift */; };
 		C57729E8A1668F0AD36561EF /* ScheduleStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4413B76A306604A596666869 /* ScheduleStore.swift */; };
 		C7CBECE298C79DBDD9207AF7 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D7D9B0871C5A3892059A8C /* NotificationManager.swift */; };
 		D259E6204D2625E2818AB4F3 /* SettingsSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C786B265848E5881E7CC8A /* SettingsSheet.swift */; };
+		D67C95EF3F7C6F8197C6DAD2 /* NotificationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF86EA103A2CC2024C2977E2 /* NotificationSettingsView.swift */; };
 		DEDBDD3E7ED6D67A4ED855E1 /* PumpControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D2DC3899E8E3FE4B4E2E76 /* PumpControlView.swift */; };
 		DF44C8E4A4A63AEC2479BB7B /* ScheduleWindowEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9056EAC398688BF3218DD3 /* ScheduleWindowEditor.swift */; };
 		E6BC39C1B03109F3F51163B8 /* TemperatureDialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BB6335B5206510BB0310A2 /* TemperatureDialView.swift */; };
@@ -54,16 +58,20 @@
 		8BC5250DCCE4A355CB5384D2 /* SpaBLEProvisioner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaBLEProvisioner.swift; sourceTree = "<group>"; };
 		8E63FEB3E4E7BE23A03318CD /* ConnectionStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStatusView.swift; sourceTree = "<group>"; };
 		90D2DC3899E8E3FE4B4E2E76 /* PumpControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PumpControlView.swift; sourceTree = "<group>"; };
+		971217C2B9B653CF2512AA0A /* SpaAlertMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaAlertMonitor.swift; sourceTree = "<group>"; };
 		981D78CA1F0548B0CF72658E /* TempSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempSample.swift; sourceTree = "<group>"; };
 		9F373F2FE26AC2ADE318F870 /* StaleStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaleStatusView.swift; sourceTree = "<group>"; };
 		A6E1F6956057060634463650 /* PreviewSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewSupport.swift; sourceTree = "<group>"; };
 		AF5F98E7367679FD138A64AD /* StatusDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDashboardView.swift; sourceTree = "<group>"; };
 		B142DC8133BA488443B03A9D /* TemperatureControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureControlView.swift; sourceTree = "<group>"; };
+		B2C6974A435140E958A31894 /* NotificationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettings.swift; sourceTree = "<group>"; };
 		B2D7D9B0871C5A3892059A8C /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		B60C41C59A295C320B31E09D /* FaultCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaultCode.swift; sourceTree = "<group>"; };
 		CA170F6E02F28888859E0A3B /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 		D4303C0CA587EF2293BA5EE2 /* WiFiSetupWizardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiSetupWizardView.swift; sourceTree = "<group>"; };
-		DE56A20B2CE60707A74051EC /* SpaControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBAB174B0B1C187124CAA675 /* UpdateChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateChecker.swift; sourceTree = "<group>"; };
+		DE56A20B2CE60707A74051EC /* SpaControl.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = SpaControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF86EA103A2CC2024C2977E2 /* NotificationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsView.swift; sourceTree = "<group>"; };
 		E7C786B265848E5881E7CC8A /* SettingsSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSheet.swift; sourceTree = "<group>"; };
 		EC434F929B6F6E0B41E5719F /* SpaControlApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaControlApp.swift; sourceTree = "<group>"; };
 		FA9056EAC398688BF3218DD3 /* ScheduleWindowEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleWindowEditor.swift; sourceTree = "<group>"; };
@@ -104,7 +112,9 @@
 			isa = PBXGroup;
 			children = (
 				B2D7D9B0871C5A3892059A8C /* NotificationManager.swift */,
+				971217C2B9B653CF2512AA0A /* SpaAlertMonitor.swift */,
 				8BC5250DCCE4A355CB5384D2 /* SpaBLEProvisioner.swift */,
+				DBAB174B0B1C187124CAA675 /* UpdateChecker.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -124,6 +134,7 @@
 				8E63FEB3E4E7BE23A03318CD /* ConnectionStatusView.swift */,
 				64C7205B44D4CB523D47427B /* ContentView.swift */,
 				FF7021F05C1C4DB1A1031113 /* LightEcoControlView.swift */,
+				DF86EA103A2CC2024C2977E2 /* NotificationSettingsView.swift */,
 				90D2DC3899E8E3FE4B4E2E76 /* PumpControlView.swift */,
 				CA170F6E02F28888859E0A3B /* ScheduleView.swift */,
 				FA9056EAC398688BF3218DD3 /* ScheduleWindowEditor.swift */,
@@ -158,6 +169,7 @@
 			children = (
 				87135931A0298F9B7FCC4FC9 /* BrokerSettings.swift */,
 				B60C41C59A295C320B31E09D /* FaultCode.swift */,
+				B2C6974A435140E958A31894 /* NotificationSettings.swift */,
 				FBD9339C7F7CB9C293B6FA36 /* Schedule.swift */,
 				6C07FDB56EA22173354AAAC6 /* SpaCommand.swift */,
 				1B37C0A144D7BBF59259D36D /* SpaStatus.swift */,
@@ -249,6 +261,8 @@
 				807DFF3C6C9AB7EA840D6A77 /* FaultCode.swift in Sources */,
 				B558F76F844A827706C97093 /* LightEcoControlView.swift in Sources */,
 				C7CBECE298C79DBDD9207AF7 /* NotificationManager.swift in Sources */,
+				7B90E774BEC2DC76A8C4D529 /* NotificationSettings.swift in Sources */,
+				D67C95EF3F7C6F8197C6DAD2 /* NotificationSettingsView.swift in Sources */,
 				318BE739D96298AE73250392 /* PreviewSupport.swift in Sources */,
 				DEDBDD3E7ED6D67A4ED855E1 /* PumpControlView.swift in Sources */,
 				E7ECDEFD20E2A085A5D6870A /* Schedule.swift in Sources */,
@@ -256,6 +270,7 @@
 				896AF61F9A811BC9C34FF7B4 /* ScheduleView.swift in Sources */,
 				DF44C8E4A4A63AEC2479BB7B /* ScheduleWindowEditor.swift in Sources */,
 				D259E6204D2625E2818AB4F3 /* SettingsSheet.swift in Sources */,
+				C55C44644F5A73734CC548B3 /* SpaAlertMonitor.swift in Sources */,
 				F58B1361F7111E2B4026FE1A /* SpaBLEProvisioner.swift in Sources */,
 				1835A89B27B35F50FA9B4871 /* SpaCommand.swift in Sources */,
 				43E58BF334D05AEBEE09379A /* SpaControlApp.swift in Sources */,
@@ -268,6 +283,7 @@
 				FDAC9ABA900B4D58164084A0 /* TemperatureControlView.swift in Sources */,
 				E6BC39C1B03109F3F51163B8 /* TemperatureDialView.swift in Sources */,
 				FF6EA27D2227E95ABAF2710C /* Theme.swift in Sources */,
+				02D50414AB86B61CDA26089C /* UpdateChecker.swift in Sources */,
 				87B211AD997CC13F347BE854 /* WiFiNetwork.swift in Sources */,
 				57EB6363C5EED92048F3F317 /* WiFiSetupWizardView.swift in Sources */,
 			);
@@ -281,12 +297,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = JK9ZS9GNST;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
+				CURRENT_PROJECT_VERSION = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1 $(inherited)";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = SpaControl;
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "SpaControl uses Bluetooth to pair with the spa controller and set up its Wi‑Fi.";
@@ -294,7 +306,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.spacontrol.SpaControl;
 				PRODUCT_NAME = SpaControl;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
@@ -324,8 +336,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = JK9ZS9GNST;
+				CURRENT_PROJECT_VERSION = 2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = SpaControl;
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "SpaControl uses Bluetooth to pair with the spa controller and set up its Wi‑Fi.";
@@ -333,7 +344,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.spacontrol.SpaControl;
 				PRODUCT_NAME = SpaControl;
 				SWIFT_VERSION = 5.0;
