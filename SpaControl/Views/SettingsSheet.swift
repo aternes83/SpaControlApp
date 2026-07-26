@@ -22,6 +22,14 @@ struct SettingsSheet: View {
                     }
                 }
 
+                Section("Alerts") {
+                    NavigationLink {
+                        NotificationSettingsView()
+                    } label: {
+                        Label("Notifications", systemImage: "bell.badge")
+                    }
+                }
+
                 Section("Broker") {
                     TextField("Host", text: $host)
                         .keyboardType(.URL)

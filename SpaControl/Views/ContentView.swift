@@ -5,6 +5,9 @@ struct ContentView: View {
     @EnvironmentObject var scheduleStore: ScheduleStore
     @State private var showSettings = false
     @State private var showSchedule = false
+    #if DEBUG
+    @State private var showNotifSettings = false
+    #endif
 
     var body: some View {
         NavigationView {
@@ -43,8 +46,14 @@ struct ContentView: View {
         .sheet(isPresented: $showSchedule) {
             ScheduleView()
         }
+        #if DEBUG
+        .sheet(isPresented: $showNotifSettings) {
+            NavigationView { NotificationSettingsView() }
+        }
+        #endif
         .onAppear {
             NotificationManager.shared.requestAuthorization()
+            UpdateChecker.check(firmwareVersion: nil)   // app-update check (no spa needed)
             if BrokerSettings.host.isEmpty {
                 showSettings = true
             } else {
@@ -52,6 +61,7 @@ struct ContentView: View {
             }
             #if DEBUG
             if UserDefaults.standard.bool(forKey: "openSchedule") { showSchedule = true }
+            if UserDefaults.standard.bool(forKey: "openNotifSettings") { showNotifSettings = true }
             #endif
         }
         .onChange(of: vm.connectionState) { state in
