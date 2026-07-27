@@ -17,6 +17,12 @@ targets:
     platform: iOS
     sources:
       - path: SpaControl
+    entitlements:
+      path: SpaControl/SpaControl.entitlements
+      properties:
+        # "development" for Xcode builds on a device (APNs sandbox);
+        # switch to "production" for TestFlight / App Store distribution.
+        aps-environment: development
     dependencies:
       - package: CocoaMQTT
         product: CocoaMQTT
