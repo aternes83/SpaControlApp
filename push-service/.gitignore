@@ -1,0 +1,8 @@
+# Secrets & runtime state — never commit these
+config.json
+*.p8
+*.tokens.json
+tokens.json
+venv/
+__pycache__/
+*.pyc

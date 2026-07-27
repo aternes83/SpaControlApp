@@ -1,0 +1,24 @@
+{
+  "mqtt": {
+    "host": "YOUR-BROKER.hivemq.cloud",
+    "port": 8883,
+    "tls": true,
+    "user": "spacontrol-push",
+    "password": "CHANGE-ME",
+    "topic": "spa/status"
+  },
+  "apns": {
+    "key_path": "AuthKey_XXXXXXXXXX.p8",
+    "key_id": "XXXXXXXXXX",
+    "team_id": "YYYYYYYYYY",
+    "bundle_id": "com.spacontrol.SpaControl",
+    "env": "sandbox"
+  },
+  "http": {
+    "host": "127.0.0.1",
+    "port": 8080,
+    "api_token": "GENERATE-A-LONG-RANDOM-SECRET"
+  },
+  "offline_seconds": 1800,
+  "token_store": "tokens.json"
+}

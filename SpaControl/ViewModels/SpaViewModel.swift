@@ -68,7 +68,11 @@ class SpaViewModel: NSObject, ObservableObject {
         lastStatusDate = Date()
         isStale = false
         appendHistory(parsed)
-        alertMonitor.process(parsed)   // faults, freeze, reached-target, stall, sensor, offline
+        // When a push service is configured the server does detection + delivery,
+        // so skip local posting to avoid duplicate notifications.
+        if !PushManager.shared.isActive {
+            alertMonitor.process(parsed)   // faults, freeze, reached-target, stall, sensor, offline
+        }
         if !updateCheckedThisConnection {
             updateCheckedThisConnection = true
             UpdateChecker.check(firmwareVersion: parsed.fw)

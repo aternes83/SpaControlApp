@@ -62,6 +62,9 @@ struct ContentView: View {
             #if DEBUG
             if UserDefaults.standard.bool(forKey: "openSchedule") { showSchedule = true }
             if UserDefaults.standard.bool(forKey: "openNotifSettings") { showNotifSettings = true }
+            if UserDefaults.standard.bool(forKey: "forcePushRegister") {
+                PushManager.shared.registerForRemoteNotifications()
+            }
             #endif
         }
         .onChange(of: vm.connectionState) { state in

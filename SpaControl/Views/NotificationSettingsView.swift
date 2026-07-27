@@ -1,18 +1,63 @@
 import SwiftUI
 
-/// Per-category on/off switches for the spa alerts. Backed by
-/// `NotificationSettings` (UserDefaults); every category defaults to ON.
+/// Per-category on/off switches for the spa alerts, plus optional push-service
+/// configuration. Backed by `NotificationSettings` (UserDefaults); every
+/// category defaults to ON. When a push service URL is set, alerts are delivered
+/// in the background via Apple Push; otherwise they're local, foreground-only.
 struct NotificationSettingsView: View {
+    @AppStorage(PushManager.urlKey) private var pushURL = ""
+    @AppStorage(PushManager.tokenKey) private var pushToken = ""
+    @ObservedObject private var push = PushManager.shared
+    @State private var previousURL = ""
+
     var body: some View {
         Form {
-            Section(footer: Text("Alerts are delivered as local notifications while the app is open or running in the background. Enable notifications for SpaControl in iOS Settings to receive them.")) {
+            Section {
+                TextField("Service URL (https://…)", text: $pushURL)
+                    .keyboardType(.URL).autocorrectionDisabled()
+                    .textInputAutocapitalization(.never)
+                    .onSubmit(applyPushConfig)
+                SecureField("API token", text: $pushToken)
+                    .onSubmit(applyPushConfig)
+                HStack {
+                    Label(push.isActive ? "Background push" : "On-device only",
+                          systemImage: push.isActive ? "bolt.horizontal.fill" : "iphone")
+                    Spacer()
+                    Text(push.isActive ? (push.lastRegistration ?? "Registering…") : "App must be open")
+                        .font(.caption).foregroundStyle(.secondary)
+                        .multilineTextAlignment(.trailing)
+                }
+            } header: {
+                Text("Delivery")
+            } footer: {
+                Text("Leave the URL blank for on-device alerts (delivered only while the app is open or briefly backgrounded). Set your push service URL to receive alerts in the background via Apple Push, even when the app is closed.")
+            }
+
+            Section {
                 ForEach(NotificationCategory.allCases) { category in
                     NotificationToggleRow(category: category)
                 }
+            } header: {
+                Text("Alerts")
+            } footer: {
+                Text("Enable notifications for SpaControl in iOS Settings to receive them.")
             }
         }
         .navigationTitle("Notifications")
         .navigationBarTitleDisplayMode(.inline)
+        .onAppear {
+            previousURL = pushURL
+            if push.isActive { push.register() }
+        }
+    }
+
+    private func applyPushConfig() {
+        if pushURL.isEmpty {
+            if !previousURL.isEmpty { push.unregister(from: previousURL) }
+        } else {
+            push.register()
+        }
+        previousURL = pushURL
     }
 }
 
@@ -41,10 +86,11 @@ private struct NotificationToggleRow: View {
         }
         .onChange(of: isOn) { newValue in
             NotificationSettings.setEnabled(category, newValue)
-            // Turning off "offline" should also clear any pending 30-min alarm.
             if category == .offline && !newValue {
                 NotificationManager.shared.cancelOffline()
             }
+            // Keep the push service's per-device preferences in sync.
+            PushManager.shared.register()
         }
     }
 }

@@ -17,9 +17,13 @@ final class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
     /// Register as delegate so foreground notifications still present as banners.
     func configure() { center.delegate = self }
 
-    /// Ask for alert/sound permission. Safe to call repeatedly.
+    /// Ask for alert/sound permission. Safe to call repeatedly. On grant, also
+    /// registers for remote (APNs) notifications so a device token is available
+    /// if/when a push service is configured.
     func requestAuthorization() {
-        center.requestAuthorization(options: [.alert, .sound, .badge]) { _, _ in }
+        center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, _ in
+            if granted { PushManager.shared.registerForRemoteNotifications() }
+        }
     }
 
     // MARK: Condition alerts

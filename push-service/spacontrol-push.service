@@ -1,0 +1,22 @@
+[Unit]
+Description=SpaControl APNs push service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+# Adjust User and paths to your VM.
+User=ubuntu
+WorkingDirectory=/opt/spacontrol-push
+Environment=PUSHD_CONFIG=/opt/spacontrol-push/config.json
+ExecStart=/opt/spacontrol-push/venv/bin/python /opt/spacontrol-push/pushd.py
+Restart=always
+RestartSec=5
+# Hardening
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadWritePaths=/opt/spacontrol-push
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target

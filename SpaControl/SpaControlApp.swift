@@ -2,6 +2,7 @@ import SwiftUI
 
 @main
 struct SpaControlApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
     @StateObject private var vm = SpaViewModel()
     @StateObject private var scheduleStore = ScheduleStore()
 
