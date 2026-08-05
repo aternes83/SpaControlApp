@@ -61,7 +61,8 @@ final class PushManager: ObservableObject {
         req.httpMethod = "POST"
         req.setValue("application/json", forHTTPHeaderField: "Content-Type")
         if !apiToken.isEmpty { req.setValue("Bearer \(apiToken)", forHTTPHeaderField: "Authorization") }
-        let body: [String: Any] = ["token": token, "platform": "ios", "prefs": prefsPayload]
+        var body: [String: Any] = ["token": token, "platform": "ios", "prefs": prefsPayload]
+        if !BrokerSettings.deviceId.isEmpty { body["device"] = BrokerSettings.deviceId }
         req.httpBody = try? JSONSerialization.data(withJSONObject: body)
 
         URLSession.shared.dataTask(with: req) { [weak self] _, resp, err in

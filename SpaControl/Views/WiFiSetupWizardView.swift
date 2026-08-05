@@ -62,7 +62,7 @@ struct WiFiSetupWizardView: View {
         }
         .onChange(of: ble.broker) { b in
             if let b {
-                BrokerSettings.save(host: b.host, port: b.port, username: b.user, password: b.password)
+                BrokerSettings.save(host: b.host, port: b.port, username: b.user, password: b.password, deviceId: b.deviceId)
                 brokerReady = true
             }
         }
