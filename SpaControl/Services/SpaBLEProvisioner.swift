@@ -20,6 +20,7 @@ struct BrokerConfig: Equatable {
     let port: Int
     let user: String
     let password: String
+    let deviceId: String
 }
 
 /// BLE client for the ESP32 spa controller's Nordic UART Service. Connects over
@@ -182,7 +183,8 @@ final class SpaBLEProvisioner: NSObject, ObservableObject {
                 host: b["host"] as? String ?? "",
                 port: (b["port"] as? NSNumber)?.intValue ?? 8883,
                 user: b["user"] as? String ?? "",
-                password: b["pw"] as? String ?? ""
+                password: b["pw"] as? String ?? "",
+                deviceId: b["device_id"] as? String ?? ""
             )
             return
         }

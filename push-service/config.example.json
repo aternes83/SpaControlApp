@@ -5,7 +5,7 @@
     "tls": true,
     "user": "spacontrol-push",
     "password": "CHANGE-ME",
-    "topic": "spa/status"
+    "topic": "spa/+/status"
   },
   "apns": {
     "key_path": "AuthKey_XXXXXXXXXX.p8",

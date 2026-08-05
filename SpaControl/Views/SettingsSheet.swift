@@ -8,6 +8,7 @@ struct SettingsSheet: View {
     @AppStorage(BrokerSettings.portKey)     private var port:     Int    = 8883
     @AppStorage(BrokerSettings.usernameKey) private var username: String = ""
     @AppStorage(BrokerSettings.passwordKey) private var password: String = ""
+    @AppStorage(BrokerSettings.deviceIdKey) private var deviceId: String = ""
 
     @State private var showWiFiWizard = false
 
@@ -51,6 +52,17 @@ struct SettingsSheet: View {
                         .autocorrectionDisabled()
                         .textInputAutocapitalization(.never)
                     SecureField("Password", text: $password)
+                }
+
+                Section {
+                    TextField("Device ID", text: $deviceId)
+                        .autocorrectionDisabled()
+                        .textInputAutocapitalization(.never)
+                        .font(.system(.body, design: .monospaced))
+                } header: {
+                    Text("Paired Spa")
+                } footer: {
+                    Text("Identifies which spa this app controls (set automatically during Bluetooth setup). Leave blank for a single legacy spa.")
                 }
 
                 Section {

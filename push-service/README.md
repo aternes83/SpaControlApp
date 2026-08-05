@@ -108,10 +108,17 @@ See `config.example.json`. `token_store` is a JSON file of registered devices
 (created automatically). `offline_seconds` (default 1800) is the no-report
 window before an offline push.
 
-## Scaling to many spas later
+## Multi-spa / multi-user
 
-Detection/offline state is already keyed per device parsed from the topic. To go
-multi-spa: have each controller publish to `spa/<id>/status`, set the service
-`topic` to `spa/+/status`, and include that `<id>` as `device` in the app's
-register payload. One `pushd` instance handles thousands of devices (it's
-I/O-light); no code change needed beyond the topic/id wiring.
+This is multi-tenant by default. Each controller has a `device_id` (its hardware
+id, or `config.json` `"device_id"`) and publishes to **`spa/<id>/status`** /
+subscribes **`spa/<id>/commands`**. The service subscribes `spa/+/status`
+(default `topic`) and keys detection/offline state per device parsed from the
+topic. The app learns the `device_id` over BLE during setup and sends it as
+`device` when registering — so a phone registered for spa A receives **only**
+spa A's pushes. A token registered with no `device` receives all (single-spa /
+legacy). One `pushd` instance handles thousands of devices (it's I/O-light).
+
+Legacy single-board firmware that still publishes bare `spa/status` isn't matched
+by `spa/+/status`; either re-flash it with a `device_id` or add `"topic"` list
+handling. Tokens without a `device` still receive those (device parsed as `spa`).

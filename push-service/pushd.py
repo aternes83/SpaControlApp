@@ -97,7 +97,7 @@ class TokenStore:
                 entry["prefs"] = prefs
             entry.setdefault("prefs", {})
             entry["platform"] = platform or entry.get("platform", "ios")
-            entry["device"] = device or entry.get("device", "spa")
+            entry["device"] = device or entry.get("device", "")   # "" = all spas (legacy)
             entry["updated"] = int(time.time())
             self.data[token] = entry
             self._save()
@@ -109,12 +109,14 @@ class TokenStore:
                 self._save()
 
     def recipients(self, device, pref_key):
-        """Tokens subscribed to `device` (or any) with `pref_key` enabled."""
+        """Tokens for `device` with `pref_key` enabled. A token registered with a
+        device_id receives only that device; a token with no device (or "any")
+        receives all — the single-spa / legacy case."""
         with self.lock:
             out = []
             for token, e in self.data.items():
-                dev = e.get("device", "spa")
-                if dev not in (device, "any", "spa"):
+                dev = e.get("device", "")
+                if dev and dev not in (device, "any"):
                     continue
                 if e.get("prefs", {}).get(pref_key, True):
                     out.append(token)
@@ -191,8 +193,8 @@ class PushService:
         if m.get("user"):
             cl.username_pw_set(m["user"], m.get("password", ""))
         cl.on_connect = lambda c, u, f, rc, p=None: (
-            log.info("mqtt connected rc=%s, subscribing %s", rc, m.get("topic", "spa/status")),
-            c.subscribe(m.get("topic", "spa/status"), qos=1))
+            log.info("mqtt connected rc=%s, subscribing %s", rc, m.get("topic", "spa/+/status")),
+            c.subscribe(m.get("topic", "spa/+/status"), qos=1))
         cl.on_message = self.on_message
         # connect_async + auto-reconnect so a broker outage never kills the
         # service (and the register endpoint stays up regardless of MQTT).

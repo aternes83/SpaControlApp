@@ -145,7 +145,7 @@ class SpaViewModel: NSObject, ObservableObject {
         applyOptimistic(command)
         guard let data = try? Self.encoder.encode(command),
               let json = String(data: data, encoding: .utf8) else { return }
-        mqttClient?.publish("spa/commands", withString: json, qos: .qos1)
+        mqttClient?.publish(BrokerSettings.commandTopic, withString: json, qos: .qos1)
     }
 
     /// Push the full schedule to the controller. Sent whenever the user edits it
@@ -156,7 +156,7 @@ class SpaViewModel: NSObject, ObservableObject {
         let cmd = SpaCommand(schedule: dto)
         guard let data = try? Self.encoder.encode(cmd),
               let json = String(data: data, encoding: .utf8) else { return }
-        mqttClient?.publish("spa/commands", withString: json, qos: .qos1)
+        mqttClient?.publish(BrokerSettings.commandTopic, withString: json, qos: .qos1)
     }
 
     private func applyOptimistic(_ cmd: SpaCommand) {
@@ -180,7 +180,7 @@ extension SpaViewModel: CocoaMQTTDelegate {
             if ack == .accept {
                 self.connectionState = .connected
                 self.updateCheckedThisConnection = false
-                mqtt.subscribe("spa/status", qos: .qos1)
+                mqtt.subscribe(BrokerSettings.statusTopic, qos: .qos1)
             } else {
                 self.connectionState = .error("Refused: \(ack)")
             }
