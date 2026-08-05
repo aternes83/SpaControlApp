@@ -49,7 +49,7 @@ class SpaAlertDetector:
 
         sensor_ok = self.SENSOR_MIN_F <= temp <= self.SENSOR_MAX_F
         self._handle_sensor(temp, sensor_ok)
-        self._handle_fault(fault, fault_code)
+        self._handle_fault(fault, fault_code, temp)
 
         if not sensor_ok:
             return
@@ -67,7 +67,7 @@ class SpaAlertDetector:
             self._sensor_faulted = False
 
     # ── faults: temperature trips vs generic vs cleared ──────────────────────
-    def _handle_fault(self, fault, code):
+    def _handle_fault(self, fault, code, temp):
         effective = code if fault else 0
         if self._last_fault is None:      # baseline: don't replay on connect
             self._last_fault = effective
@@ -79,6 +79,8 @@ class SpaAlertDetector:
             self.emit("faultCleared", {})
         elif effective in (2, 3):         # high-limit / over-temp
             self.emit("highTemp", {"code": effective})
+        elif effective == 5:              # water-temp sensor fault
+            self.emit("sensorFault", {"temp": round(temp)})
         else:                             # no-flow / e-stop / other
             self.emit("fault", {"code": effective})
 

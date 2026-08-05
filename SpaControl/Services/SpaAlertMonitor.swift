@@ -94,8 +94,9 @@ final class SpaAlertMonitor {
         lastFaultCode = code
         switch code {
         case 0:       sink.faultCleared()
-        case 2, 3:    sink.highTemp(code: code)   // high-limit / over-temp
-        default:      sink.fault(code: code)      // no-flow / e-stop / other
+        case 2, 3:    sink.highTemp(code: code)             // high-limit / over-temp
+        case 5:       sink.sensorFault(temp: Int(s.tempF.rounded()))  // temp-sensor fault
+        default:      sink.fault(code: code)                // no-flow / e-stop / other
         }
     }
 
