@@ -11,6 +11,7 @@ struct SettingsSheet: View {
     @AppStorage(BrokerSettings.deviceIdKey) private var deviceId: String = ""
 
     @State private var showWiFiWizard = false
+    @State private var showCalWizard = false
 
     var body: some View {
         NavigationView {
@@ -20,6 +21,11 @@ struct SettingsSheet: View {
                         showWiFiWizard = true
                     } label: {
                         Label("Set up spa Wi‑Fi over Bluetooth", systemImage: "wifi")
+                    }
+                    Button {
+                        showCalWizard = true
+                    } label: {
+                        Label("Calibrate temperature sensor", systemImage: "thermometer.variable")
                     }
                 }
 
@@ -92,6 +98,10 @@ struct SettingsSheet: View {
                     showWiFiWizard = false
                 }
             }
+        }
+        .sheet(isPresented: $showCalWizard) {
+            CalibrationWizardView { _ in showCalWizard = false }
+                .environmentObject(vm)
         }
     }
 }

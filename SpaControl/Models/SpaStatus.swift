@@ -12,6 +12,8 @@ struct SpaStatus: Decodable {
     var maxJet:    Bool?    // optional so status from older firmware still decodes
     var fault:     Bool
     var faultCode: Int
+    var rOhms:     Int?     // live NTC probe resistance (Ω); nil for non-analog sensors
+                            // or older firmware. Used by the calibration wizard.
     var scheduleOn:     Bool?   // schedule feature enabled on the controller
     var scheduleActive: Bool?   // a heat window is currently active
     var fw:             String? // controller firmware version (for update checks)

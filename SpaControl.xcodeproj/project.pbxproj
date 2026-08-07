@@ -27,6 +27,7 @@
 		896AF61F9A811BC9C34FF7B4 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA170F6E02F28888859E0A3B /* ScheduleView.swift */; };
 		9D3002DB6443FB69DE467BA2 /* StaleStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F373F2FE26AC2ADE318F870 /* StaleStatusView.swift */; };
 		A9D46AC0CF10C138EA6909CB /* SpaStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B37C0A144D7BBF59259D36D /* SpaStatus.swift */; };
+		AF53908B38381BCCBD460ACF /* TempCalibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F0693C90BD8CE9582ADA0A /* TempCalibration.swift */; };
 		B558F76F844A827706C97093 /* LightEcoControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7021F05C1C4DB1A1031113 /* LightEcoControlView.swift */; };
 		BB8017133B928743911AA044 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5920F29B2B3ED975F4894AA3 /* Assets.xcassets */; };
 		C55C44644F5A73734CC548B3 /* SpaAlertMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971217C2B9B653CF2512AA0A /* SpaAlertMonitor.swift */; };
@@ -43,12 +44,15 @@
 		F8731BEC913E0B9AF597AB6C /* PushManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4F42D565045A6ADDB18358 /* PushManager.swift */; };
 		FDAC9ABA900B4D58164084A0 /* TemperatureControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B142DC8133BA488443B03A9D /* TemperatureControlView.swift */; };
 		FF6EA27D2227E95ABAF2710C /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD3BB2B0949A6D26749B4C9 /* Theme.swift */; };
+		FFE7FE15EA3A73FD4F150E35 /* CalibrationWizardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04192F20CDCD6C702A406D67 /* CalibrationWizardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04192F20CDCD6C702A406D67 /* CalibrationWizardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationWizardView.swift; sourceTree = "<group>"; };
 		1B37C0A144D7BBF59259D36D /* SpaStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaStatus.swift; sourceTree = "<group>"; };
 		1FD3BB2B0949A6D26749B4C9 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		23B41F9ACCEE999D93F29720 /* SpaControl.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SpaControl.entitlements; sourceTree = "<group>"; };
+		27F0693C90BD8CE9582ADA0A /* TempCalibration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempCalibration.swift; sourceTree = "<group>"; };
 		3420B1B077E7F2551C8D89F5 /* SpaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaViewModel.swift; sourceTree = "<group>"; };
 		34AC1BCD3F87758BC563F18E /* WiFiNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiNetwork.swift; sourceTree = "<group>"; };
 		3E4F42D565045A6ADDB18358 /* PushManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushManager.swift; sourceTree = "<group>"; };
@@ -75,7 +79,7 @@
 		CC9142B70DE3DEDBC165847C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4303C0CA587EF2293BA5EE2 /* WiFiSetupWizardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiSetupWizardView.swift; sourceTree = "<group>"; };
 		DBAB174B0B1C187124CAA675 /* UpdateChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateChecker.swift; sourceTree = "<group>"; };
-		DE56A20B2CE60707A74051EC /* SpaControl.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = SpaControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE56A20B2CE60707A74051EC /* SpaControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF86EA103A2CC2024C2977E2 /* NotificationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsView.swift; sourceTree = "<group>"; };
 		E7C786B265848E5881E7CC8A /* SettingsSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSheet.swift; sourceTree = "<group>"; };
 		EC434F929B6F6E0B41E5719F /* SpaControlApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaControlApp.swift; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 		A53179085715589C48C17CE2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				04192F20CDCD6C702A406D67 /* CalibrationWizardView.swift */,
 				8E63FEB3E4E7BE23A03318CD /* ConnectionStatusView.swift */,
 				64C7205B44D4CB523D47427B /* ContentView.swift */,
 				FF7021F05C1C4DB1A1031113 /* LightEcoControlView.swift */,
@@ -181,6 +186,7 @@
 				FBD9339C7F7CB9C293B6FA36 /* Schedule.swift */,
 				6C07FDB56EA22173354AAAC6 /* SpaCommand.swift */,
 				1B37C0A144D7BBF59259D36D /* SpaStatus.swift */,
+				27F0693C90BD8CE9582ADA0A /* TempCalibration.swift */,
 				981D78CA1F0548B0CF72658E /* TempSample.swift */,
 				34AC1BCD3F87758BC563F18E /* WiFiNetwork.swift */,
 			);
@@ -265,6 +271,7 @@
 			files = (
 				0D4375A7815D318236C12570 /* AppDelegate.swift in Sources */,
 				84B68F1CD857B5A90B88A4C3 /* BrokerSettings.swift in Sources */,
+				FFE7FE15EA3A73FD4F150E35 /* CalibrationWizardView.swift in Sources */,
 				72DD127E8BE250C98EBEBF36 /* ConnectionStatusView.swift in Sources */,
 				F5743EABB974EA9BBCEE6A55 /* ContentView.swift in Sources */,
 				807DFF3C6C9AB7EA840D6A77 /* FaultCode.swift in Sources */,
@@ -288,6 +295,7 @@
 				2A36248C4FB34002BA59FC5B /* SpaViewModel.swift in Sources */,
 				9D3002DB6443FB69DE467BA2 /* StaleStatusView.swift in Sources */,
 				7A8E44BDEB647B828CC2DF2E /* StatusDashboardView.swift in Sources */,
+				AF53908B38381BCCBD460ACF /* TempCalibration.swift in Sources */,
 				5725FEF07EE3793292170EFF /* TempHistoryView.swift in Sources */,
 				1B229DA6C734776551EB38D6 /* TempSample.swift in Sources */,
 				FDAC9ABA900B4D58164084A0 /* TemperatureControlView.swift in Sources */,
@@ -307,9 +315,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SpaControl/SpaControl.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1 $(inherited)";
+				DEVELOPMENT_TEAM = JK9ZS9GNST;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = SpaControl;
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "SpaControl uses Bluetooth to pair with the spa controller and set up its Wi‑Fi.";
@@ -317,9 +330,14 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.spacontrol.SpaControl;
 				PRODUCT_NAME = SpaControl;
+				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -329,16 +347,119 @@
 		ABEF9978BCCABFA8EAD9F26B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		BADAB451D511F9782D21F833 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -347,8 +468,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SpaControl/SpaControl.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = JK9ZS9GNST;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = SpaControl;
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "SpaControl uses Bluetooth to pair with the spa controller and set up its Wi‑Fi.";
@@ -356,9 +479,14 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.spacontrol.SpaControl;
 				PRODUCT_NAME = SpaControl;
+				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
