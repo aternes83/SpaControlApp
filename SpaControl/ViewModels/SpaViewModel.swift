@@ -31,6 +31,8 @@ class SpaViewModel: NSObject, ObservableObject {
 
     private var mqttClient: CocoaMQTT?
     private var intentionalDisconnect = false
+    /// Guards against stacking multiple pending 5 s reconnect timers.
+    private var reconnectPending = false
     private var stalenessTimer: Timer?
 
     /// Edge-detects spa conditions from the status stream and raises the
@@ -112,7 +114,18 @@ class SpaViewModel: NSObject, ObservableObject {
         }
 
         intentionalDisconnect = false
-        mqttClient?.disconnect()
+        reconnectPending = false          // this fresh connect supersedes any pending retry
+
+        // Fully retire any previous client BEFORE building a new one. Clearing its
+        // delegate first is essential: otherwise the old client's late
+        // `mqttDidDisconnect` fires into `self`, sees intentionalDisconnect == false,
+        // and schedules a phantom reconnect — stacking timers into a connect/
+        // disconnect loop. Detach, then disconnect, then drop the reference.
+        if let old = mqttClient {
+            old.delegate = nil
+            old.disconnect()
+            mqttClient = nil
+        }
 
         // NOTE: CocoaMQTT's GCDAsyncSocket TLS (MqttCocoaAsyncSocket) does not
         // establish TLS on recent iOS SDKs, so we use the WebSocket transport
@@ -135,6 +148,7 @@ class SpaViewModel: NSObject, ObservableObject {
 
     func disconnect() {
         intentionalDisconnect = true
+        reconnectPending = false
         mqttClient?.disconnect()
     }
 
@@ -159,6 +173,19 @@ class SpaViewModel: NSObject, ObservableObject {
         mqttClient?.publish(BrokerSettings.commandTopic, withString: json, qos: .qos1)
     }
 
+    /// Push NTC calibration coefficients to the controller. The board applies them
+    /// live and persists them, so this is fire-and-forget (the next status carries
+    /// the corrected temperature). Returns false if not connected.
+    @discardableResult
+    func sendCalibration(_ cal: TempCalDTO) -> Bool {
+        guard connectionState == .connected else { return false }
+        let cmd = SpaCommand(setTempCal: cal)
+        guard let data = try? Self.encoder.encode(cmd),
+              let json = String(data: data, encoding: .utf8) else { return false }
+        mqttClient?.publish(BrokerSettings.commandTopic, withString: json, qos: .qos1)
+        return true
+    }
+
     private func applyOptimistic(_ cmd: SpaCommand) {
         guard var s = status else { return }
         if let v = cmd.setTemp { s.setpoint = v }
@@ -177,6 +204,7 @@ extension SpaViewModel: CocoaMQTTDelegate {
 
     func mqtt(_ mqtt: CocoaMQTT, didConnectAck ack: CocoaMQTTConnAck) {
         DispatchQueue.main.async {
+            guard mqtt === self.mqttClient else { return }   // ignore a retired client
             if ack == .accept {
                 self.connectionState = .connected
                 self.updateCheckedThisConnection = false
@@ -191,11 +219,18 @@ extension SpaViewModel: CocoaMQTTDelegate {
         guard let string = message.string,
               let data   = string.data(using: .utf8),
               let parsed = try? Self.decoder.decode(SpaStatus.self, from: data) else { return }
-        DispatchQueue.main.async { self.ingest(parsed) }
+        DispatchQueue.main.async {
+            guard mqtt === self.mqttClient else { return }   // ignore a retired client
+            self.ingest(parsed)
+        }
     }
 
     func mqttDidDisconnect(_ mqtt: CocoaMQTT, withError err: Error?) {
         DispatchQueue.main.async {
+            // Ignore disconnects from a client we've already retired (see connect()).
+            // Without this, a superseded client's teardown schedules a phantom
+            // reconnect and the app flaps between connected/disconnected.
+            guard mqtt === self.mqttClient else { return }
             self.connectionState = .disconnected
             self.status = nil
             self.lastStatusDate = nil
@@ -207,7 +242,13 @@ extension SpaViewModel: CocoaMQTTDelegate {
                 NotificationManager.shared.cancelOffline()
                 return
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5) { self.connect() }
+            // Single-flight the retry so overlapping disconnects can't stack timers.
+            guard !self.reconnectPending else { return }
+            self.reconnectPending = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                self.reconnectPending = false
+                if !self.intentionalDisconnect { self.connect() }
+            }
         }
     }
 
