@@ -73,6 +73,13 @@ enum TempCalibration {
         Preset(id: "balboa10k",  name: "Balboa 10k",
                detail: "Balboa / most retrofit packs · 10kΩ @ 25°C",
                cal: TempCalDTO(rFixed: defaultRFixed, r0: 10_000, t0C: 25, beta: 3950, offsetF: 0)),
+        // Balboa M7 temp/high-limit combo: 30kΩ NTC @ 25°C. rFixed is the standard
+        // 10kΩ divider so it works on the existing board build (Vadc stays in-range
+        // across spa temps); a 30kΩ R1 improves cold-end resolution but isn't
+        // required, and the 2-point wizard refines the curve either way.
+        Preset(id: "balboaM7",   name: "Balboa M7 30k",
+               detail: "Balboa M7 temp/high-limit combo · 30kΩ @ 25°C",
+               cal: TempCalDTO(rFixed: defaultRFixed, r0: 30_000, t0C: 25, beta: 3892, offsetF: 0)),
         Preset(id: "gecko10k",   name: "Gecko / Aeware 10k",
                detail: "Gecko in.xe / in.ye packs · 10kΩ @ 25°C",
                cal: TempCalDTO(rFixed: defaultRFixed, r0: 10_000, t0C: 25, beta: 3970, offsetF: 0)),
