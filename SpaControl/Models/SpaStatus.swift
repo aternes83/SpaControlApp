@@ -17,4 +17,6 @@ struct SpaStatus: Decodable {
     var scheduleOn:     Bool?   // schedule feature enabled on the controller
     var scheduleActive: Bool?   // a heat window is currently active
     var fw:             String? // controller firmware version (for update checks)
+    var otaAvail:       String? // newer controller firmware offered over OTA, else nil
+    var otaState:       String? // controller updater state: idle|fetching|applying|error
 }

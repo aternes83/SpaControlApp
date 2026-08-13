@@ -17,7 +17,10 @@ struct ContentView: View {
                 if BrokerSettings.host.isEmpty {
                     SetupPromptView(showSettings: $showSettings)
                 } else {
-                    StatusDashboardView()
+                    VStack(spacing: 0) {
+                        AppUpdateBanner()
+                        StatusDashboardView()
+                    }
                 }
             }
             .navigationTitle("SpaControl")
