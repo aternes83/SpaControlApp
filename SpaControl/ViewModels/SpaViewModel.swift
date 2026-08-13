@@ -186,6 +186,19 @@ class SpaViewModel: NSObject, ObservableObject {
         return true
     }
 
+    /// Tell the controller to install an available firmware version over OTA. The
+    /// board fetches + verifies + applies + reboots (with automatic rollback if the
+    /// new build won't run). Returns false if not connected.
+    @discardableResult
+    func sendOtaApply(_ version: String) -> Bool {
+        guard connectionState == .connected else { return false }
+        let cmd = SpaCommand(otaApply: version)
+        guard let data = try? Self.encoder.encode(cmd),
+              let json = String(data: data, encoding: .utf8) else { return false }
+        mqttClient?.publish(BrokerSettings.commandTopic, withString: json, qos: .qos1)
+        return true
+    }
+
     private func applyOptimistic(_ cmd: SpaCommand) {
         guard var s = status else { return }
         if let v = cmd.setTemp { s.setpoint = v }

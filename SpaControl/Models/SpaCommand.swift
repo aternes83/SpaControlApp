@@ -12,6 +12,7 @@ struct SpaCommand: Encodable {
     var maxJet:  Bool?
     var schedule: ScheduleDTO?
     var setTempCal: TempCalDTO?
+    var otaApply: String?      // → "ota_apply": tells the controller to install this version
 }
 
 /// NTC temperature-sensor calibration pushed to the controller. The firmware

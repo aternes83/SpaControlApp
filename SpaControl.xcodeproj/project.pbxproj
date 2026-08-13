@@ -25,6 +25,8 @@
 		84B68F1CD857B5A90B88A4C3 /* BrokerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87135931A0298F9B7FCC4FC9 /* BrokerSettings.swift */; };
 		87B211AD997CC13F347BE854 /* WiFiNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AC1BCD3F87758BC563F18E /* WiFiNetwork.swift */; };
 		896AF61F9A811BC9C34FF7B4 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA170F6E02F28888859E0A3B /* ScheduleView.swift */; };
+		9263FDDD3A130CB56B3A8C1A /* FirmwareUpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA735AF48B8014B025A176B /* FirmwareUpdateView.swift */; };
+		98AC637EE1C13216BCBD89AD /* AppUpdateBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB5FBD98EC84265543CF05B /* AppUpdateBanner.swift */; };
 		9D3002DB6443FB69DE467BA2 /* StaleStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F373F2FE26AC2ADE318F870 /* StaleStatusView.swift */; };
 		A9D46AC0CF10C138EA6909CB /* SpaStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B37C0A144D7BBF59259D36D /* SpaStatus.swift */; };
 		AF53908B38381BCCBD460ACF /* TempCalibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F0693C90BD8CE9582ADA0A /* TempCalibration.swift */; };
@@ -62,12 +64,14 @@
 		64C7205B44D4CB523D47427B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		6C07FDB56EA22173354AAAC6 /* SpaCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaCommand.swift; sourceTree = "<group>"; };
 		7964696D282A294C820B283E /* TempHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempHistoryView.swift; sourceTree = "<group>"; };
+		7AA735AF48B8014B025A176B /* FirmwareUpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirmwareUpdateView.swift; sourceTree = "<group>"; };
 		87135931A0298F9B7FCC4FC9 /* BrokerSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrokerSettings.swift; sourceTree = "<group>"; };
 		8BC5250DCCE4A355CB5384D2 /* SpaBLEProvisioner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaBLEProvisioner.swift; sourceTree = "<group>"; };
 		8E63FEB3E4E7BE23A03318CD /* ConnectionStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStatusView.swift; sourceTree = "<group>"; };
 		90D2DC3899E8E3FE4B4E2E76 /* PumpControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PumpControlView.swift; sourceTree = "<group>"; };
 		971217C2B9B653CF2512AA0A /* SpaAlertMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaAlertMonitor.swift; sourceTree = "<group>"; };
 		981D78CA1F0548B0CF72658E /* TempSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempSample.swift; sourceTree = "<group>"; };
+		9CB5FBD98EC84265543CF05B /* AppUpdateBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUpdateBanner.swift; sourceTree = "<group>"; };
 		9F373F2FE26AC2ADE318F870 /* StaleStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaleStatusView.swift; sourceTree = "<group>"; };
 		A6E1F6956057060634463650 /* PreviewSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewSupport.swift; sourceTree = "<group>"; };
 		AF5F98E7367679FD138A64AD /* StatusDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDashboardView.swift; sourceTree = "<group>"; };
@@ -79,7 +83,7 @@
 		CC9142B70DE3DEDBC165847C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4303C0CA587EF2293BA5EE2 /* WiFiSetupWizardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiSetupWizardView.swift; sourceTree = "<group>"; };
 		DBAB174B0B1C187124CAA675 /* UpdateChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateChecker.swift; sourceTree = "<group>"; };
-		DE56A20B2CE60707A74051EC /* SpaControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE56A20B2CE60707A74051EC /* SpaControl.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = SpaControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF86EA103A2CC2024C2977E2 /* NotificationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsView.swift; sourceTree = "<group>"; };
 		E7C786B265848E5881E7CC8A /* SettingsSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSheet.swift; sourceTree = "<group>"; };
 		EC434F929B6F6E0B41E5719F /* SpaControlApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaControlApp.swift; sourceTree = "<group>"; };
@@ -141,9 +145,11 @@
 		A53179085715589C48C17CE2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9CB5FBD98EC84265543CF05B /* AppUpdateBanner.swift */,
 				04192F20CDCD6C702A406D67 /* CalibrationWizardView.swift */,
 				8E63FEB3E4E7BE23A03318CD /* ConnectionStatusView.swift */,
 				64C7205B44D4CB523D47427B /* ContentView.swift */,
+				7AA735AF48B8014B025A176B /* FirmwareUpdateView.swift */,
 				FF7021F05C1C4DB1A1031113 /* LightEcoControlView.swift */,
 				DF86EA103A2CC2024C2977E2 /* NotificationSettingsView.swift */,
 				90D2DC3899E8E3FE4B4E2E76 /* PumpControlView.swift */,
@@ -270,11 +276,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D4375A7815D318236C12570 /* AppDelegate.swift in Sources */,
+				98AC637EE1C13216BCBD89AD /* AppUpdateBanner.swift in Sources */,
 				84B68F1CD857B5A90B88A4C3 /* BrokerSettings.swift in Sources */,
 				FFE7FE15EA3A73FD4F150E35 /* CalibrationWizardView.swift in Sources */,
 				72DD127E8BE250C98EBEBF36 /* ConnectionStatusView.swift in Sources */,
 				F5743EABB974EA9BBCEE6A55 /* ContentView.swift in Sources */,
 				807DFF3C6C9AB7EA840D6A77 /* FaultCode.swift in Sources */,
+				9263FDDD3A130CB56B3A8C1A /* FirmwareUpdateView.swift in Sources */,
 				B558F76F844A827706C97093 /* LightEcoControlView.swift in Sources */,
 				C7CBECE298C79DBDD9207AF7 /* NotificationManager.swift in Sources */,
 				7B90E774BEC2DC76A8C4D529 /* NotificationSettings.swift in Sources */,
@@ -318,11 +326,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = JK9ZS9GNST;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1 $(inherited)";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = SpaControl;
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "SpaControl uses Bluetooth to pair with the spa controller and set up its Wi‑Fi.";
@@ -471,7 +475,6 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = JK9ZS9GNST;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = SpaControl;
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "SpaControl uses Bluetooth to pair with the spa controller and set up its Wi‑Fi.";

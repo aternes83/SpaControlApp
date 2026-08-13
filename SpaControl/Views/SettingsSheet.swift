@@ -27,6 +27,22 @@ struct SettingsSheet: View {
                     } label: {
                         Label("Calibrate temperature sensor", systemImage: "thermometer.variable")
                     }
+                    NavigationLink {
+                        FirmwareUpdateView()
+                    } label: {
+                        HStack {
+                            Label("Controller firmware", systemImage: "cpu")
+                            if let a = vm.status?.otaAvail, !a.isEmpty, a != vm.status?.fw {
+                                Spacer()
+                                Text("Update")
+                                    .font(.caption2).fontWeight(.semibold)
+                                    .padding(.horizontal, 8).padding(.vertical, 2)
+                                    .background(Theme.water.opacity(0.2))
+                                    .foregroundColor(Theme.water)
+                                    .clipShape(Capsule())
+                            }
+                        }
+                    }
                 }
 
                 Section("Alerts") {
