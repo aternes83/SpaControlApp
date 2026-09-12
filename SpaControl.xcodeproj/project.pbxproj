@@ -43,6 +43,7 @@
 		E7ECDEFD20E2A085A5D6870A /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD9339C7F7CB9C293B6FA36 /* Schedule.swift */; };
 		F5743EABB974EA9BBCEE6A55 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C7205B44D4CB523D47427B /* ContentView.swift */; };
 		F58B1361F7111E2B4026FE1A /* SpaBLEProvisioner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC5250DCCE4A355CB5384D2 /* SpaBLEProvisioner.swift */; };
+		F58B1362F7111E2B4026FE1B /* SpaTimeZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC5250ECCE4A355CB5384D3 /* SpaTimeZone.swift */; };
 		F8731BEC913E0B9AF597AB6C /* PushManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4F42D565045A6ADDB18358 /* PushManager.swift */; };
 		FDAC9ABA900B4D58164084A0 /* TemperatureControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B142DC8133BA488443B03A9D /* TemperatureControlView.swift */; };
 		FF6EA27D2227E95ABAF2710C /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD3BB2B0949A6D26749B4C9 /* Theme.swift */; };
@@ -67,6 +68,7 @@
 		7AA735AF48B8014B025A176B /* FirmwareUpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirmwareUpdateView.swift; sourceTree = "<group>"; };
 		87135931A0298F9B7FCC4FC9 /* BrokerSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrokerSettings.swift; sourceTree = "<group>"; };
 		8BC5250DCCE4A355CB5384D2 /* SpaBLEProvisioner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaBLEProvisioner.swift; sourceTree = "<group>"; };
+		8BC5250ECCE4A355CB5384D3 /* SpaTimeZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaTimeZone.swift; sourceTree = "<group>"; };
 		8E63FEB3E4E7BE23A03318CD /* ConnectionStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStatusView.swift; sourceTree = "<group>"; };
 		90D2DC3899E8E3FE4B4E2E76 /* PumpControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PumpControlView.swift; sourceTree = "<group>"; };
 		971217C2B9B653CF2512AA0A /* SpaAlertMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaAlertMonitor.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				3E4F42D565045A6ADDB18358 /* PushManager.swift */,
 				971217C2B9B653CF2512AA0A /* SpaAlertMonitor.swift */,
 				8BC5250DCCE4A355CB5384D2 /* SpaBLEProvisioner.swift */,
+				8BC5250ECCE4A355CB5384D3 /* SpaTimeZone.swift */,
 				DBAB174B0B1C187124CAA675 /* UpdateChecker.swift */,
 			);
 			path = Services;
@@ -297,6 +300,7 @@
 				D259E6204D2625E2818AB4F3 /* SettingsSheet.swift in Sources */,
 				C55C44644F5A73734CC548B3 /* SpaAlertMonitor.swift in Sources */,
 				F58B1361F7111E2B4026FE1A /* SpaBLEProvisioner.swift in Sources */,
+				F58B1362F7111E2B4026FE1B /* SpaTimeZone.swift in Sources */,
 				1835A89B27B35F50FA9B4871 /* SpaCommand.swift in Sources */,
 				43E58BF334D05AEBEE09379A /* SpaControlApp.swift in Sources */,
 				A9D46AC0CF10C138EA6909CB /* SpaStatus.swift in Sources */,

@@ -73,9 +73,23 @@ final class SpaBLEProvisioner: NSObject, ObservableObject {
     }
 
     /// Send WiFi credentials; the controller connects and reports the result.
+    ///
+    /// The tub's timezone rides along. Whoever runs this wizard is standing next
+    /// to the tub, so the phone is the only thing that reliably knows where the
+    /// tub is — and it is per-tub, not per-app: two spas on different sites keep
+    /// their own. Sent as a POSIX TZ string because the controller carries no
+    /// timezone database (see SpaTimeZone).
     func provisionWiFi(ssid: String, password: String) {
         provision = .connecting
-        send(["wifi_ssid": ssid, "wifi_pw": password])
+        send(["wifi_ssid": ssid,
+              "wifi_pw": password,
+              "tz": SpaTimeZone.posixString()])
+    }
+
+    /// Push just the timezone, without re-entering WiFi credentials. For a tub
+    /// that has moved, or a phone that has.
+    func sendTimeZone() {
+        send(["tz": SpaTimeZone.posixString()])
     }
 
     /// Ask the controller for its MQTT broker settings (to auto-configure the app).
