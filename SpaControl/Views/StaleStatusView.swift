@@ -28,6 +28,33 @@ struct StaleStatusBanner: View {
     }
 }
 
+/// Shown when the broker is reachable but the spa is not — its last will has
+/// fired, so the controller has stopped answering keepalives. Red rather than
+/// amber, and worded as a fact about the tub rather than about the app, because
+/// this is the case that used to render as a healthy green "Connected" over a
+/// retained snapshot of a spa that went off the network hours earlier.
+struct SpaOfflineBanner: View {
+    var body: some View {
+        HStack(spacing: 10) {
+            Image(systemName: "wifi.slash")
+                .font(.title3)
+            VStack(alignment: .leading, spacing: 2) {
+                Text("Spa is offline").bold()
+                Text("The tub is not reachable — check its power and Wi-Fi. "
+                     + "Anything shown below is the last thing it reported, not "
+                     + "what it is doing now.")
+                    .font(.caption)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+            Spacer()
+        }
+        .padding()
+        .background(Color.red.opacity(0.9))
+        .foregroundColor(.white)
+        .cornerRadius(12)
+    }
+}
+
 /// Subtle, right-aligned caption showing how long ago the last status arrived.
 /// Re-renders once per second via TimelineView so the age counts up live.
 struct LastUpdatedLabel: View {
@@ -47,6 +74,11 @@ struct LastUpdatedLabel: View {
 
     private func text(now: Date) -> String {
         guard let last = vm.lastStatusDate else {
+            if vm.isSpaOffline { return "Spa offline" }
+            // No trustworthy timestamp. Either nothing has arrived yet, or all we
+            // have is the broker's retained copy — and claiming that was
+            // "updated just now" is the lie this whole path exists to stop.
+            if vm.status != nil { return "Last known reading, age unknown" }
             return vm.connectionState == .connected ? "Awaiting data…" : "—"
         }
         return "Updated \(RelativeTime.string(since: last, now: now))"

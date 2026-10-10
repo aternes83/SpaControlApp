@@ -8,7 +8,12 @@ struct StatusDashboardView: View {
             VStack(spacing: 16) {
                 LastUpdatedLabel()
 
-                if vm.isStale {
+                // Offline is the stronger statement and replaces the stale
+                // banner rather than stacking with it — both at once would be
+                // two amber-ish warnings about the same single fact.
+                if vm.isSpaOffline {
+                    SpaOfflineBanner()
+                } else if vm.isStale {
                     StaleStatusBanner(lastUpdate: vm.lastStatusDate)
                 }
 

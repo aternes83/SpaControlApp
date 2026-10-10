@@ -34,6 +34,14 @@ enum BrokerSettings {
     static var commandTopic: String {
         deviceId.isEmpty ? "spa/commands" : "spa/\(deviceId)/commands"
     }
+    /// Retained liveness, written by the controller on connect and by the broker
+    /// (as the controller's last will) when it stops answering keepalives. This
+    /// is the only topic that can tell a cold app the tub is off the network —
+    /// `status` is retained too, so it hands over a plausible-looking snapshot
+    /// of a spa that died hours ago. See docs/MQTT.md in the firmware repo.
+    static var onlineTopic: String {
+        deviceId.isEmpty ? "spa/online" : "spa/\(deviceId)/online"
+    }
 
     /// Persist broker settings (e.g. fetched from the controller over BLE).
     static func save(host: String, port: Int, username: String, password: String, deviceId: String = "") {

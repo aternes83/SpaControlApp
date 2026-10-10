@@ -11,6 +11,10 @@ struct ConnectionStatusView: View {
     }
 
     private var label: String {
+        // The tub's own absence outranks everything below it. "Connected" here
+        // only ever meant connected to the broker, which is not the question the
+        // user is asking when they open the app.
+        if vm.isSpaOffline { return "Spa offline" }
         if isStaleConnected { return "Stale" }
         switch vm.connectionState {
         case .connected:       return "Connected"
@@ -21,6 +25,7 @@ struct ConnectionStatusView: View {
     }
 
     private var dot: Color {
+        if vm.isSpaOffline { return .red }
         if isStaleConnected { return .orange }
         switch vm.connectionState {
         case .connected:            return .green

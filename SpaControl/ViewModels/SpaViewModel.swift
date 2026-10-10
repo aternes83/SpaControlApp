@@ -13,10 +13,30 @@ class SpaViewModel: NSObject, ObservableObject {
     @Published var status: SpaStatus?
     @Published var connectionState: ConnectionState = .disconnected
 
-    /// Timestamp of the most recent valid `spa/status`. nil until the first arrives.
+    /// Timestamp of the most recent *live* `spa/status`. Stays nil while the only
+    /// status we hold is the broker's retained copy, whose age is unknowable —
+    /// see `ingest(_:retained:)` — unless a retained `online` of true dates it,
+    /// see `vouchForRetainedStatus()`.
     @Published private(set) var lastStatusDate: Date?
-    /// True when connected but no fresh status has arrived within `staleThreshold`.
+    /// True when connected but no fresh status has arrived within `staleThreshold`,
+    /// or when all we have is a retained snapshot of unknown age.
     @Published private(set) var isStale: Bool = false
+
+    /// What the broker says about the tub itself, from the retained `spa/online`
+    /// topic: true while the controller holds its connection, false once its last
+    /// will fires, and **nil when we simply do not know**.
+    ///
+    /// nil is a real and common answer, not a placeholder. Firmware older than
+    /// the last-will change never publishes this topic, so absence has to mean
+    /// "this tub cannot tell me" and fall back to judging freshness. Treating it
+    /// as offline would strand every v2.0 spa behind a permanent error.
+    @Published private(set) var spaOnline: Bool?
+
+    /// The broker is reachable but the tub is not. This is the case the app used
+    /// to show as a healthy green "Connected": the router at the spa goes down,
+    /// the controller stops publishing, and the retained `status` keeps handing
+    /// every app that opens a complete picture of a running tub.
+    var isSpaOffline: Bool { connectionState == .connected && spaOnline == false }
 
     /// The board publishes `spa/status` every ~30 s; flag stale after 3 missed
     /// cycles. This stays above the ~30 s gap of the weekly planned reboot, so a
@@ -55,18 +75,59 @@ class SpaViewModel: NSObject, ObservableObject {
     }
 
     private func refreshStaleness() {
-        guard connectionState == .connected, let last = lastStatusDate else {
+        guard connectionState == .connected else {
             if isStale { isStale = false }
+            return
+        }
+        guard let last = lastStatusDate else {
+            // Connected, and either nothing has arrived yet or the only thing
+            // that has is retained. Holding a snapshot we cannot date is exactly
+            // the situation to call stale, not one to call fresh.
+            let stale = (status != nil)
+            if stale != isStale { isStale = stale }
             return
         }
         let stale = Date().timeIntervalSince(last) > Self.staleThreshold
         if stale != isStale { isStale = stale }
     }
 
-    /// Apply a freshly decoded status: update state, freshness, history, and
-    /// fault notifications. Always called on the main thread.
-    private func ingest(_ parsed: SpaStatus) {
+    /// A retained status *can* be dated when the broker also says the tub is
+    /// online: a connected controller republishes `status` retained every 5 s,
+    /// so the broker's copy is at most a heartbeat old — or, if the tub dropped
+    /// in the last ~45 s and its will has not fired yet, at most that old. That
+    /// is well inside `staleThreshold`, so it is stamped now and the ordinary
+    /// timer takes over from there. Without this every cold open flashes "Stale"
+    /// over a perfectly healthy spa until the next heartbeat lands.
+    ///
+    /// The two retained messages arrive in either order, so this is called from
+    /// both sides. It still adds no history point and raises no alert.
+    private func vouchForRetainedStatus() {
+        guard spaOnline == true, status != nil, lastStatusDate == nil else { return }
+        lastStatusDate = Date()
+        isStale = false
+    }
+
+    /// Apply a decoded status: update state, freshness, history, and fault
+    /// notifications. Always called on the main thread.
+    ///
+    /// `retained` marks the copy the broker replays to every new subscriber. It
+    /// is the last thing the controller published, which may have been seconds
+    /// or weeks ago — the protocol carries no timestamp, and the message is
+    /// byte-for-byte what a live one looks like. So its *values* are shown, as
+    /// the last thing known, but it is never allowed to pass as evidence that
+    /// the tub is alive: no freshness stamp, no history point dated now, and no
+    /// alert raised from a fault that may long since have cleared.
+    ///
+    /// The one exception is a retained `online` of true, see
+    /// `vouchForRetainedStatus()`.
+    private func ingest(_ parsed: SpaStatus, retained: Bool) {
         status = parsed
+        guard !retained else {
+            lastStatusDate = nil
+            isStale = true
+            vouchForRetainedStatus()
+            return
+        }
         lastStatusDate = Date()
         isStale = false
         appendHistory(parsed)
@@ -222,6 +283,7 @@ extension SpaViewModel: CocoaMQTTDelegate {
                 self.connectionState = .connected
                 self.updateCheckedThisConnection = false
                 mqtt.subscribe(BrokerSettings.statusTopic, qos: .qos1)
+                mqtt.subscribe(BrokerSettings.onlineTopic, qos: .qos1)
             } else {
                 self.connectionState = .error("Refused: \(ack)")
             }
@@ -229,12 +291,42 @@ extension SpaViewModel: CocoaMQTTDelegate {
     }
 
     func mqtt(_ mqtt: CocoaMQTT, didReceiveMessage message: CocoaMQTTMessage, id: UInt16) {
-        guard let string = message.string,
+        guard let string = message.string else { return }
+        let retained = message.retained
+
+        if message.topic == BrokerSettings.onlineTopic {
+            // "true"/"false" from the controller or its last will. Anything else
+            // is left as nil rather than guessed at: an unparseable liveness flag
+            // is not evidence either way.
+            let trimmed = string.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+            let value: Bool? = (trimmed == "true")  ? true
+                             : (trimmed == "false") ? false
+                             : nil
+            DispatchQueue.main.async {
+                guard mqtt === self.mqttClient else { return }
+                self.spaOnline = value
+                if value == false {
+                    // The tub is gone; whatever is on screen is a leftover.
+                    self.lastStatusDate = nil
+                    self.isStale = true
+                } else {
+                    self.vouchForRetainedStatus()
+                }
+            }
+            return
+        }
+
+        guard message.topic == BrokerSettings.statusTopic,
               let data   = string.data(using: .utf8),
               let parsed = try? Self.decoder.decode(SpaStatus.self, from: data) else { return }
         DispatchQueue.main.async {
             guard mqtt === self.mqttClient else { return }   // ignore a retired client
-            self.ingest(parsed)
+            // A live status is proof the tub is talking, whatever the retained
+            // online flag still says. The flag is only ever corrected by the
+            // broker or the controller, and on reconnect the controller's "true"
+            // can arrive after the first status.
+            if !retained { self.spaOnline = true }
+            self.ingest(parsed, retained: retained)
         }
     }
 
@@ -248,6 +340,9 @@ extension SpaViewModel: CocoaMQTTDelegate {
             self.status = nil
             self.lastStatusDate = nil
             self.isStale = false
+            // Unknown, not online: we have lost the broker, so we have lost our
+            // only source of truth about the tub as well.
+            self.spaOnline = nil
             self.alertMonitor.reset()   // re-baseline; don't re-notify on reconnect
             // Keep the pending 30-min offline alarm on an unexpected drop (the spa
             // may truly be down); only clear it when the user disconnects.
