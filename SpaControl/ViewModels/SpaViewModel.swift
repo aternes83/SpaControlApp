@@ -94,7 +94,8 @@ class SpaViewModel: NSObject, ObservableObject {
     /// A retained status *can* be dated when the broker also says the tub is
     /// online: a connected controller republishes `status` retained every 5 s,
     /// so the broker's copy is at most a heartbeat old — or, if the tub dropped
-    /// in the last ~45 s and its will has not fired yet, at most that old. That
+    /// in the last ~22 s (1.5x its 15 s keepalive) and its will has not fired
+    /// yet, at most that old. That
     /// is well inside `staleThreshold`, so it is stamped now and the ordinary
     /// timer takes over from there. Without this every cold open flashes "Stale"
     /// over a perfectly healthy spa until the next heartbeat lands.
