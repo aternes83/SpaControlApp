@@ -85,7 +85,7 @@
 		CC9142B70DE3DEDBC165847C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4303C0CA587EF2293BA5EE2 /* WiFiSetupWizardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiSetupWizardView.swift; sourceTree = "<group>"; };
 		DBAB174B0B1C187124CAA675 /* UpdateChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateChecker.swift; sourceTree = "<group>"; };
-		DE56A20B2CE60707A74051EC /* SpaControl.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = SpaControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE56A20B2CE60707A74051EC /* SpaControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF86EA103A2CC2024C2977E2 /* NotificationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsView.swift; sourceTree = "<group>"; };
 		E7C786B265848E5881E7CC8A /* SettingsSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSheet.swift; sourceTree = "<group>"; };
 		EC434F929B6F6E0B41E5719F /* SpaControlApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaControlApp.swift; sourceTree = "<group>"; };
@@ -330,7 +330,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1 $(inherited)";
+				DEVELOPMENT_TEAM = JK9ZS9GNST;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = SpaControl;
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "SpaControl uses Bluetooth to pair with the spa controller and set up its Wi‑Fi.";
@@ -479,6 +483,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = JK9ZS9GNST;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = SpaControl;
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "SpaControl uses Bluetooth to pair with the spa controller and set up its Wi‑Fi.";
